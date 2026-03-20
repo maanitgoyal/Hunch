@@ -411,12 +411,12 @@ function NumberGuess({ userId, coins, onCoinsChanged, onWin, onLose }) {
         <div className="flex items-center justify-between">
           <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Guess</label>
           <span className="text-white font-bold text-sm">
-            Range: <span className="text-cyan-400">{rangeStart} - {rangeEnd}</span>
+            Range: <span className="text-violet-400">{rangeStart} - {rangeEnd}</span>
           </span>
         </div>
         <input type="range" min={12} max={97} step={1} value={guess}
           onChange={(e) => setGuess(Number(e.target.value))} disabled={busy}
-          className="w-full accent-cyan-400" />
+          className="w-full accent-violet-400" />
         <div className="flex justify-center">
           <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-2 text-center">
             <p className="text-4xl font-black text-white">{guess}</p>
@@ -444,7 +444,7 @@ function NumberGuess({ userId, coins, onCoinsChanged, onWin, onLose }) {
             </div>
           </div>
           <button onClick={handleGuess} disabled={busy}
-            className="w-full py-3 rounded-xl font-black text-black bg-cyan-400 hover:bg-cyan-300 disabled:opacity-40 transition-all active:scale-95">
+            className="w-full py-3 rounded-xl font-black text-black bg-violet-400 hover:bg-violet-300 disabled:opacity-40 transition-all active:scale-95">
             {busy ? 'Revealing...' : 'Reveal!'}
           </button>
         </>
@@ -527,7 +527,7 @@ function DraftPick({ userId }) {
               ) : (
                 <>
                   <div className="flex-1 text-gray-600 text-sm italic">Empty slot</div>
-                  <button onClick={() => { setEditing(rank); setSearch('') }} className="text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">+ Pick</button>
+                  <button onClick={() => { setEditing(rank); setSearch('') }} className="text-xs font-bold text-violet-400 hover:text-violet-300 transition-colors">+ Pick</button>
                 </>
               )}
             </div>
@@ -539,7 +539,7 @@ function DraftPick({ userId }) {
         <div className="space-y-2">
           <input value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder={`Search college for ${RANK_LABELS[editing - 1]}...`} autoFocus
-            className="w-full px-4 py-2.5 rounded-xl bg-[#111118] border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 transition-all" />
+            className="w-full px-4 py-2.5 rounded-xl bg-[#111118] border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-violet-400/60 transition-all" />
           <div className="space-y-1 max-h-48 overflow-y-auto">
             {filtered.map((c) => (
               <button key={c.id} onClick={() => handlePick(c)} disabled={saving}

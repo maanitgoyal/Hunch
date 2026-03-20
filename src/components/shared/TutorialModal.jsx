@@ -23,8 +23,8 @@ function BetDemo() {
   if (phase === 1) {
     return (
       <div className="space-y-3">
-        <div className="flex items-center gap-2 bg-cyan-500/10 border border-cyan-400/25 rounded-xl px-3 py-2">
-          <span className="text-cyan-400 text-xs font-bold">✓ Warrane to win · 1.85x</span>
+        <div className="flex items-center gap-2 bg-violet-500/10 border border-violet-400/25 rounded-xl px-3 py-2">
+          <span className="text-violet-400 text-xs font-bold">✓ Warrane to win · 1.85x</span>
         </div>
         <div className="space-y-2">
           <div className="flex justify-between text-xs text-gray-400">
@@ -35,7 +35,7 @@ function BetDemo() {
             type="range" min={10} max={200} step={10}
             value={stake}
             onChange={(e) => setStake(Number(e.target.value))}
-            className="w-full accent-cyan-400"
+            className="w-full accent-violet-400"
           />
           <div className="flex justify-between text-xs text-gray-500">
             <span>10</span><span>200</span>
@@ -87,15 +87,15 @@ function BetDemo() {
             onClick={() => label === 'Warrane' && setPhase(1)}
             className={`rounded-xl py-2 px-1 border text-center transition-all
               ${label === 'Warrane'
-                ? 'bg-cyan-500/15 border-cyan-400/40 hover:bg-cyan-500/25 cursor-pointer'
+                ? 'bg-violet-500/15 border-violet-400/40 hover:bg-violet-500/25 cursor-pointer'
                 : 'bg-white/5 border-white/8 opacity-60 cursor-default'}`}
           >
             <p className="text-white text-[10px] font-bold leading-tight">{label}</p>
-            <p className="text-cyan-400 text-xs font-black mt-0.5">{odds}</p>
+            <p className="text-violet-400 text-xs font-black mt-0.5">{odds}</p>
           </button>
         ))}
       </div>
-      <p className="text-gray-600 text-[10px] text-center">Tap <span className="text-cyan-400">Warrane</span> to continue</p>
+      <p className="text-gray-600 text-[10px] text-center">Tap <span className="text-violet-400">Warrane</span> to continue</p>
     </div>
   )
 }
@@ -239,7 +239,7 @@ function LeaderboardDemo() {
         </div>
       ))}
       <p className="text-gray-500 text-xs text-center pt-1">
-        Switch to <span className="text-cyan-400">Colleges</span> tab to see your college rank
+        Switch to <span className="text-violet-400">Colleges</span> tab to see your college rank
       </p>
     </div>
   )
@@ -275,7 +275,7 @@ function AvatarDemo() {
             onClick={() => setPicked(e)}
             className={`aspect-square rounded-lg text-xl flex items-center justify-center transition-all hover:scale-110
               ${picked === e
-                ? 'bg-cyan-500/20 border border-cyan-400/50 scale-110'
+                ? 'bg-violet-500/20 border border-violet-400/50 scale-110'
                 : 'bg-white/5 border-white/8 hover:bg-white/10'}`}
           >
             {e}
@@ -380,7 +380,7 @@ export default function TutorialModal({ onClose }) {
                 style={{
                   width: i === step ? '18px' : '6px',
                   height: '6px',
-                  background: i === step ? '#22d3ee' : 'rgba(255,255,255,0.2)',
+                  background: i === step ? '#a78bfa' : 'rgba(255,255,255,0.2)',
                 }}
               />
             ))}

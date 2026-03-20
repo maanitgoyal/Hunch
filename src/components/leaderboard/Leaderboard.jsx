@@ -17,7 +17,7 @@ function TabBar({ active, onChange }) {
           onClick={() => onChange(t)}
           className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all
             ${active === t
-              ? 'bg-gradient-to-r from-cyan-600 to-sky-600 text-white shadow-lg shadow-cyan-500/20'
+              ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/20'
               : 'text-gray-400 hover:text-white'}`}
         >
           {t}
@@ -89,7 +89,7 @@ function CollegeRow({ row, rank, isMyCollege }) {
         <p className="text-gray-500 text-xs">{row.member_count} member{row.member_count !== 1 ? 's' : ''}</p>
       </div>
       <div className="text-right space-y-0.5">
-        <p className="text-cyan-400 font-black text-sm">
+        <p className="text-violet-400 font-black text-sm">
           {row.avg_win_rate != null ? `${row.avg_win_rate}%` : '—'}
           <span className="text-gray-600 font-normal text-xs ml-1">avg win rate</span>
         </p>

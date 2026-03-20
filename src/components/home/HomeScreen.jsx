@@ -36,7 +36,7 @@ export default function HomeScreen() {
           <h2 className="text-lg font-black text-white">Upcoming Games</h2>
           <button
             onClick={() => navigate('/games')}
-            className="text-sm text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
+            className="text-sm text-violet-400 hover:text-violet-300 font-semibold transition-colors"
           >
             View all →
           </button>

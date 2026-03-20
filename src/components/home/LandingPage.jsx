@@ -19,7 +19,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between" style={{ height: '60px' }}>
           <div className="flex items-center gap-2">
             <HunchLogo size={36} />
-            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, letterSpacing: '0.06em', fontSize: '1.35rem' }} className="bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-400 bg-clip-text text-transparent">Hunch</span>
+            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, letterSpacing: '0.06em', fontSize: '1.35rem' }} className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-violet-400 bg-clip-text text-transparent">Hunch</span>
           </div>
           <div className="flex items-center gap-3">
             <NavLink
@@ -30,7 +30,7 @@ export default function LandingPage() {
             </NavLink>
             <NavLink
               to="/signup"
-              className="px-4 py-2 rounded-lg text-sm font-bold bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-500 hover:to-sky-500 text-white shadow-lg shadow-cyan-500/25 transition-all"
+              className="px-4 py-2 rounded-lg text-sm font-bold bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 transition-all"
             >
               Sign up free
             </NavLink>
@@ -40,14 +40,14 @@ export default function LandingPage() {
 
       {/* Hero */}
       <div className="flex-1 flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 text-xs font-semibold mb-8 uppercase tracking-wider">
-          <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-400 text-xs font-semibold mb-8 uppercase tracking-wider">
+          <span className="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse" />
           College sports prediction
         </div>
 
         <h1 className="text-5xl sm:text-7xl font-black text-white leading-none tracking-tight mb-6">
           Predict.{' '}
-          <span className="bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
             Win.
           </span>{' '}
           Repeat.
@@ -61,7 +61,7 @@ export default function LandingPage() {
         <div className="flex items-center gap-4 flex-wrap justify-center">
           <NavLink
             to="/signup"
-            className="px-8 py-3.5 rounded-xl text-base font-black bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-500 hover:to-sky-500 text-white shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="px-8 py-3.5 rounded-xl text-base font-black bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-xl shadow-violet-500/30 hover:shadow-violet-500/50 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
             Get started free
           </NavLink>
@@ -80,7 +80,7 @@ export default function LandingPage() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl border border-white/8 bg-white/[0.03] backdrop-blur-sm p-5 text-center"
+              className="rounded-2xl border border-violet-500/15 bg-white/[0.05] backdrop-blur-sm p-5 text-center hover:border-violet-500/30 hover:bg-white/[0.08] transition-all"
             >
               <div className="text-3xl mb-3">{f.icon}</div>
               <p className="text-white font-bold text-sm mb-1">{f.title}</p>

@@ -24,6 +24,7 @@ function AnimatedBackground() {
   return (
     <>
       <div className="gradient-mesh" />
+      <div className="grain" />
       <div className="page-sweep" />
     </>
   )

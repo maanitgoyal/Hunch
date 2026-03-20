@@ -14,8 +14,8 @@ export default function HunchLogo({ size = 40, className = '' }) {
           <stop offset="1" stopColor="#161630" />
         </linearGradient>
         <linearGradient id="hl-h" x1="50" y1="50" x2="142" y2="142" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#22d3ee" />
-          <stop offset="1" stopColor="#0ea5e9" />
+          <stop stopColor="#a78bfa" />
+          <stop offset="1" stopColor="#d946ef" />
         </linearGradient>
         <filter id="hl-glow" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="4" result="blur" />
@@ -27,27 +27,27 @@ export default function HunchLogo({ size = 40, className = '' }) {
       </defs>
 
       {/* Card outer glow */}
-      <rect x="24" y="14" width="148" height="170" rx="22" fill="#0ea5e9" fillOpacity="0.10" />
+      <rect x="24" y="14" width="148" height="170" rx="22" fill="#7c3aed" fillOpacity="0.15" />
 
       {/* Card body */}
       <rect x="18" y="8" width="148" height="170" rx="22" fill="url(#hl-bg)" />
 
       {/* Card border */}
-      <rect x="18" y="8" width="148" height="170" rx="22" stroke="#22d3ee" strokeWidth="1.5" strokeOpacity="0.35" />
+      <rect x="18" y="8" width="148" height="170" rx="22" stroke="#a78bfa" strokeWidth="1.5" strokeOpacity="0.35" />
 
       {/* Inner border subtle */}
-      <rect x="22" y="12" width="140" height="162" rx="19" stroke="#22d3ee" strokeWidth="0.5" strokeOpacity="0.12" />
+      <rect x="22" y="12" width="140" height="162" rx="19" stroke="#a78bfa" strokeWidth="0.5" strokeOpacity="0.12" />
 
       {/* Top-left corner: H */}
       <text
         x="31" y="47"
         fontFamily="'Arial Black', 'Arial', sans-serif"
         fontSize="22" fontWeight="900"
-        fill="#22d3ee" fillOpacity="0.85"
+        fill="#a78bfa" fillOpacity="0.85"
       >H</text>
 
       {/* Top-left corner: diamond pip */}
-      <path d="M35 55 L40 61 L35 67 L30 61 Z" fill="#22d3ee" fillOpacity="0.5" />
+      <path d="M35 55 L40 61 L35 67 L30 61 Z" fill="#a78bfa" fillOpacity="0.5" />
 
       {/* Bottom-right corner (rotated 180° around card center x=92, y=93) */}
       <g transform="rotate(180, 92, 93)">
@@ -55,9 +55,9 @@ export default function HunchLogo({ size = 40, className = '' }) {
           x="31" y="47"
           fontFamily="'Arial Black', 'Arial', sans-serif"
           fontSize="22" fontWeight="900"
-          fill="#22d3ee" fillOpacity="0.85"
+          fill="#a78bfa" fillOpacity="0.85"
         >H</text>
-        <path d="M35 55 L40 61 L35 67 L30 61 Z" fill="#22d3ee" fillOpacity="0.5" />
+        <path d="M35 55 L40 61 L35 67 L30 61 Z" fill="#a78bfa" fillOpacity="0.5" />
       </g>
 
       {/* Center H - large with glow */}

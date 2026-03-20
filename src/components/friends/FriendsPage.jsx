@@ -68,10 +68,10 @@ export function AddFriendButton({ targetId, myId, size = 'sm' }) {
 
   if (status === 'accepted') return <span className={`${cls} text-green-400 bg-green-500/10`}>Friends</span>
   if (status === 'sent')     return <span className={`${cls} text-gray-500 bg-white/5`}>Requested</span>
-  if (status === 'pending')  return <span className={`${cls} text-cyan-400 bg-cyan-500/10`}>Respond</span>
+  if (status === 'pending')  return <span className={`${cls} text-violet-400 bg-violet-500/10`}>Respond</span>
 
   return (
-    <button onClick={handle} disabled={busy} className={`${cls} bg-cyan-600/20 text-cyan-400 hover:bg-cyan-600/35 border border-cyan-500/25`}>
+    <button onClick={handle} disabled={busy} className={`${cls} bg-violet-600/20 text-violet-400 hover:bg-violet-600/35 border border-violet-500/25`}>
       {busy ? '...' : '+ Add'}
     </button>
   )
@@ -101,7 +101,7 @@ function SearchSection({ myId, onClose }) {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name..."
         autoFocus
-        className="w-full px-4 py-3 rounded-xl bg-[#111118] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 transition-all text-sm"
+        className="w-full px-4 py-3 rounded-xl bg-[#111118] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 transition-all text-sm"
       />
       {loading && <p className="text-gray-500 text-sm text-center">Searching...</p>}
       <div className="space-y-2">
@@ -169,7 +169,7 @@ export default function FriendsPage() {
             onClick={() => setTab(t)}
             className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all relative
               ${tab === t
-                ? 'bg-gradient-to-r from-cyan-600 to-sky-600 text-white shadow-lg shadow-cyan-500/20'
+                ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/20'
                 : 'text-gray-400 hover:text-white'}`}
           >
             {t}

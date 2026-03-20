@@ -139,7 +139,7 @@ export default function SignupScreen() {
                 key={i}
                 className={`flex-1 py-3 text-center text-xs font-semibold tracking-wide transition-colors
                   ${i === (step === STEP.DETAILS ? 0 : 1)
-                    ? 'text-cyan-400 border-b-2 border-cyan-400'
+                    ? 'text-violet-400 border-b-2 border-violet-400'
                     : 'text-gray-600'}`}
               >
                 <span className={`inline-flex items-center justify-center w-4 h-4 rounded-full text-[10px] mr-1.5
@@ -157,7 +157,7 @@ export default function SignupScreen() {
               <>
                 <h2 className="text-xl font-bold text-white mb-1">Create account</h2>
                 <p className="text-gray-400 text-sm mb-6">
-                  1,000 coins free to start <span className="text-cyan-400">🪙</span>
+                  1,000 coins free to start <span className="text-violet-400">🪙</span>
                 </p>
 
                 <form onSubmit={handleSignup} className="space-y-4">
@@ -254,7 +254,7 @@ export default function SignupScreen() {
 
                 <h2 className="text-xl font-bold text-white mb-1">Check your email</h2>
                 <p className="text-gray-400 text-sm mb-1">We sent a 6-digit code to</p>
-                <p className="text-cyan-400 font-semibold text-sm mb-6 truncate">{email}</p>
+                <p className="text-violet-400 font-semibold text-sm mb-6 truncate">{email}</p>
 
                 <OTPInput length={6} onComplete={handleVerifyOTP} disabled={busy} />
 
@@ -269,7 +269,7 @@ export default function SignupScreen() {
                 <div className="mt-5 text-center">
                   {countdown > 0
                     ? <p className="text-gray-500 text-sm">Resend in {countdown}s</p>
-                    : <button onClick={handleResend} className="text-cyan-400 text-sm font-semibold hover:text-yellow-300 transition-colors">
+                    : <button onClick={handleResend} className="text-violet-400 text-sm font-semibold hover:text-yellow-300 transition-colors">
                         Resend code
                       </button>
                   }
@@ -285,7 +285,7 @@ export default function SignupScreen() {
 
         <p className="text-center text-gray-500 text-sm mt-5">
           Already have an account?{' '}
-          <Link to="/login" className="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">
+          <Link to="/login" className="text-violet-400 font-semibold hover:text-violet-300 transition-colors">
             Sign in →
           </Link>
         </p>
@@ -313,7 +313,7 @@ function BtnSpinner() {
   )
 }
 
-const inputCls = 'w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 focus:bg-white/10 transition-all text-sm'
+const inputCls = 'w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 focus:bg-white/10 transition-all text-sm'
 
 function CollegeSelect({ colleges, value, onChange }) {
   const [open, setOpen]       = useState(false)
@@ -413,7 +413,7 @@ function CollegeSelect({ colleges, value, onChange }) {
                 onMouseDown={() => select(c)}
                 onMouseEnter={() => setCursor(i)}
                 className={`px-4 py-3 text-sm cursor-pointer transition-colors
-                  ${i === cursor ? 'bg-yellow-400/10 text-cyan-400' : 'text-white hover:bg-white/5'}
+                  ${i === cursor ? 'bg-yellow-400/10 text-violet-400' : 'text-white hover:bg-white/5'}
                   ${c.id === value ? 'font-semibold' : ''}`}
               >
                 {c.name}

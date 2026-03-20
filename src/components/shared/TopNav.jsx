@@ -40,10 +40,10 @@ export default function TopNav() {
 
         {/* Logo */}
         <NavLink to="/" className="flex items-center gap-2 shrink-0 group z-10">
-          <HunchLogo size={36} className="drop-shadow-lg group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] transition-all" />
+          <HunchLogo size={36} className="drop-shadow-lg group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.6)] transition-all" />
           <span
             style={LOGO_FONT}
-            className="bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.4)]"
+            className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-violet-400 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(167,139,250,0.4)]"
           >Hunch</span>
         </NavLink>
 

@@ -5,9 +5,9 @@ const BANNERS = [
   {
     id: 'bet-now',
     bg: 'from-[#0d1f3c] via-[#0a3060] to-[#061428]',
-    accent: '#38bdf8',
-    glow: 'rgba(56,189,248,0.35)',
-    shimmer: 'from-sky-500/0 via-sky-400/20 to-sky-500/0',
+    accent: '#a78bfa',
+    glow: 'rgba(139,92,246,0.35)',
+    shimmer: 'from-violet-500/0 via-violet-400/20 to-violet-500/0',
     eyebrow: '⚽  LIVE MARKETS OPEN',
     headline: "Think you know\nwho's going to win?",
     sub: 'Lock in your odds before they shift.',

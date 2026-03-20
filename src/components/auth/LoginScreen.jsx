@@ -70,7 +70,7 @@ export default function LoginScreen() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@email.com"
                     required autoFocus autoComplete="email"
-                    className="w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 focus:bg-white/10 transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 focus:bg-white/10 transition-all text-sm"
                   />
                 </div>
 
@@ -80,7 +80,7 @@ export default function LoginScreen() {
                     <button
                       type="button"
                       onClick={() => { setForgotMode(true); setError(''); setResetSent(false) }}
-                      className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+                      className="text-xs text-violet-400 hover:text-violet-300 transition-colors"
                     >
                       Forgot password?
                     </button>
@@ -92,7 +92,7 @@ export default function LoginScreen() {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••"
                       required autoComplete="current-password"
-                      className="w-full px-4 py-3 rounded-xl pr-14 bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 focus:bg-white/10 transition-all text-sm"
+                      className="w-full px-4 py-3 rounded-xl pr-14 bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 focus:bg-white/10 transition-all text-sm"
                     />
                     <button type="button" onClick={() => setShowPw(!showPw)}
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 text-xs font-semibold transition-colors">
@@ -125,8 +125,8 @@ export default function LoginScreen() {
               <p className="text-gray-400 text-sm mb-6">We'll send a reset link to your email.</p>
 
               {resetSent ? (
-                <div className="rounded-xl bg-cyan-500/10 border border-cyan-500/20 px-4 py-4 text-center">
-                  <p className="text-cyan-400 font-semibold text-sm">Check your inbox</p>
+                <div className="rounded-xl bg-violet-500/10 border border-violet-500/20 px-4 py-4 text-center">
+                  <p className="text-violet-400 font-semibold text-sm">Check your inbox</p>
                   <p className="text-gray-400 text-xs mt-1">A reset link has been sent to {email}</p>
                 </div>
               ) : (
@@ -138,7 +138,7 @@ export default function LoginScreen() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@email.com"
                       required autoFocus
-                      className="w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 focus:bg-white/10 transition-all text-sm"
+                      className="w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 focus:bg-white/10 transition-all text-sm"
                     />
                   </div>
                   {error && <ErrorBox message={error} />}
@@ -159,7 +159,7 @@ export default function LoginScreen() {
 
         <p className="text-center text-gray-500 text-sm mt-5">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">
+          <Link to="/signup" className="text-violet-400 font-semibold hover:text-violet-300 transition-colors">
             Create one
           </Link>
         </p>
@@ -185,11 +185,11 @@ export function AuthLogo() {
     <div className="mb-8 flex flex-col items-center gap-3">
       <div className="relative">
         <HunchLogo size={72} />
-        <div className="absolute -inset-2 rounded-2xl bg-cyan-500/15 blur-xl -z-10" />
+        <div className="absolute -inset-2 rounded-2xl bg-violet-500/15 blur-xl -z-10" />
       </div>
       <div className="text-center">
-        <h1 style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, letterSpacing: '0.06em' }} className="text-5xl bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-400 bg-clip-text text-transparent">Hunch</h1>
-        <p className="text-cyan-300/50 text-xs font-semibold tracking-[0.2em] uppercase mt-1">
+        <h1 style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, letterSpacing: '0.06em' }} className="text-5xl bg-gradient-to-r from-violet-300 via-fuchsia-300 to-violet-400 bg-clip-text text-transparent">Hunch</h1>
+        <p className="text-violet-300/50 text-xs font-semibold tracking-[0.2em] uppercase mt-1">
           College Sports · Play Money
         </p>
       </div>
@@ -207,8 +207,8 @@ export function ErrorBox({ message }) {
 
 export const submitCls = `
   w-full py-3.5 rounded-xl font-bold text-white text-sm
-  bg-gradient-to-r from-cyan-600 to-sky-600
-  hover:from-cyan-500 hover:to-sky-500
+  bg-gradient-to-r from-violet-600 to-purple-600
+  hover:from-violet-500 hover:to-fuchsia-500
   active:scale-95 disabled:opacity-50
-  transition-all shadow-lg shadow-cyan-500/20
+  transition-all shadow-lg shadow-violet-500/20
 `

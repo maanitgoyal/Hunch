@@ -54,7 +54,7 @@ function CreateModal({ onClose, onCreated, userId }) {
         <button
           type="submit"
           disabled={busy || !name.trim()}
-          className="w-full py-3 rounded-xl font-bold bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-500 hover:to-sky-500 text-white disabled:opacity-40 transition-all"
+          className="w-full py-3 rounded-xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white disabled:opacity-40 transition-all"
         >
           {busy ? 'Creating...' : 'Create Lobby'}
         </button>
@@ -95,7 +95,7 @@ function JoinModal({ onClose, onJoined, userId }) {
         <button
           type="submit"
           disabled={busy || code.length < 4}
-          className="w-full py-3 rounded-xl font-bold bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-500 hover:to-sky-500 text-white disabled:opacity-40 transition-all"
+          className="w-full py-3 rounded-xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white disabled:opacity-40 transition-all"
         >
           {busy ? 'Joining...' : 'Join Lobby'}
         </button>
@@ -152,7 +152,7 @@ function LobbyDetail({ lobby, userId, myId, onBack, onLeft }) {
         <div className="flex flex-col items-end gap-2 shrink-0">
           <button
             onClick={copyCode}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/8 border border-white/10 hover:bg-white/12 transition-all text-sm font-mono font-bold text-cyan-400"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/8 border border-white/10 hover:bg-white/12 transition-all text-sm font-mono font-bold text-violet-400"
           >
             {lobby.invite_code}
             <span className="text-gray-500 font-sans font-normal text-xs">
@@ -249,7 +249,7 @@ function LobbyCard({ lobby, onClick }) {
           </p>
         </div>
         <div className="shrink-0 text-right">
-          <p className="text-cyan-400 font-mono font-bold text-sm">{lobby.invite_code}</p>
+          <p className="text-violet-400 font-mono font-bold text-sm">{lobby.invite_code}</p>
           <p className="text-gray-600 text-xs mt-0.5">{memberCount} member{memberCount !== 1 ? 's' : ''}</p>
         </div>
       </div>
@@ -282,7 +282,7 @@ function Field({ label, children }) {
   )
 }
 
-const inputCls = 'w-full px-4 py-3 rounded-xl bg-[#111118] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/60 transition-all text-sm'
+const inputCls = 'w-full px-4 py-3 rounded-xl bg-[#111118] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 transition-all text-sm'
 
 // ─── Main page ─────────────────────────────────────────────────
 export default function LobbiesPage() {
@@ -348,7 +348,7 @@ export default function LobbiesPage() {
           </button>
           <button
             onClick={() => setShowCreate(true)}
-            className="px-4 py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-500 hover:to-sky-500 text-white shadow-lg shadow-cyan-500/20 transition-all"
+            className="px-4 py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/20 transition-all"
           >
             + Create
           </button>

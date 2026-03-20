@@ -10,12 +10,10 @@
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #f0f0f5;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #e8e8f0;
     -webkit-font-smoothing: antialiased;
-    background: linear-gradient(-45deg, #020202, #0a0d0f, #050505, #0d1014, #020202);
-    background-size: 400% 400%;
-    animation: bg-flow 18s ease-in-out infinite;
+    background: #05050f;
   }
 }
 
@@ -30,13 +28,7 @@
 }
 .card-shake { animation: card-shake 0.55s ease-in-out; }
 
-@keyframes bg-flow {
-  0%   { background-position: 0%   50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0%   50%; }
-}
-
-/* Slow-spinning colour mesh */
+/* Slow-spinning colour mesh — vivid enough to actually see */
 @keyframes mesh-spin {
   from { transform: rotate(0deg)   scale(1.6); }
   to   { transform: rotate(360deg) scale(1.6); }
@@ -46,12 +38,23 @@
   position: fixed;
   inset: -50%;
   background:
-    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(255,255,255,0.025) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 35% at 80% 70%, rgba(6,182,212,0.06)    0%, transparent 65%),
-    radial-gradient(ellipse 40% 30% at 60% 10%, rgba(255,255,255,0.015) 0%, transparent 65%);
-  animation: mesh-spin 50s linear infinite;
+    radial-gradient(ellipse 55% 40% at 15% 25%, rgba(124,58,237,0.28)  0%, transparent 60%),
+    radial-gradient(ellipse 50% 38% at 85% 75%, rgba(217,70,239,0.22)  0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 55% 5%,  rgba(139,92,246,0.18)  0%, transparent 60%),
+    radial-gradient(ellipse 35% 28% at 30% 85%, rgba(167,139,250,0.12) 0%, transparent 55%);
+  animation: mesh-spin 55s linear infinite;
   pointer-events: none;
   z-index: -1;
+}
+
+/* Grain texture — the difference between "good dark UI" and "premium dark UI" */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Card shimmer */
@@ -63,13 +66,14 @@
   animation: card-shimmer 5s ease-in-out infinite;
 }
 
-/* Page-level sweep */
+/* Banner sweep */
 @keyframes banner-shimmer {
   0%   { transform: translateX(-120%); }
   60%  { transform: translateX(220%); }
   100% { transform: translateX(220%); }
 }
 
+/* Page-level sweep */
 @keyframes page-sweep {
   0%   { transform: translateX(-100%) skewX(-12deg); opacity: 0; }
   15%  { opacity: 1; }
@@ -79,11 +83,11 @@
 .page-sweep {
   position: fixed;
   inset: 0;
-  width: 35vw;
+  width: 40vw;
   pointer-events: none;
   z-index: 0;
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.018), transparent);
-  animation: page-sweep 12s ease-in-out infinite;
+  background: linear-gradient(to right, transparent, rgba(139,92,246,0.05), transparent);
+  animation: page-sweep 14s ease-in-out infinite;
 }
 
 @layer utilities {
@@ -95,8 +99,8 @@
 
   .glass {
     background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(139,92,246,0.14);
   }
 
   .scrollbar-hide::-webkit-scrollbar { display: none; }

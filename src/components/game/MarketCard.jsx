@@ -18,7 +18,7 @@ function PoolBar({ options, optionStakes }) {
       {options.map((o, i) => {
         const stake = optionStakes[o.key] ?? 0
         const pct = total > 0 ? (stake / total) * 100 : 0
-        const colors = ['bg-cyan-500', 'bg-purple-500', 'bg-amber-500']
+        const colors = ['bg-violet-500', 'bg-purple-500', 'bg-amber-500']
         return (
           <div
             key={o.key}
@@ -108,7 +108,7 @@ export default function MarketCard({ market, existingBets = [], userCoins, onBet
 
             if (isCorrect)       { borderClass = 'border-green-400'; bgClass = 'bg-green-500/15'; textClass = 'text-green-300' }
             else if (isWrong)    { borderClass = 'border-red-400';   bgClass = 'bg-red-500/15';   textClass = 'text-red-300'   }
-            else if (isSelectedUI) { borderClass = 'border-cyan-400'; bgClass = 'bg-cyan-500/10' }
+            else if (isSelectedUI) { borderClass = 'border-violet-400'; bgClass = 'bg-violet-500/10' }
             else if (isUserPick) { borderClass = 'border-yellow-400/60'; bgClass = 'bg-yellow-500/10' }
 
             return (
