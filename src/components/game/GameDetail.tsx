@@ -60,7 +60,7 @@ function PredictionPoll({ game, userId }: PredictionPollProps) {
   const total = counts?.total ?? 0
 
   return (
-    <div className="mx-4 mb-4 rounded-2xl bg-black/30 border border-white/10 p-4">
+    <div className="mx-4 mb-4 rounded-2xl bg-black/30 border border-[#e0dbd3] p-4">
       <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-3">
         Who do you think will win? (no coins)
       </p>
@@ -78,7 +78,7 @@ function PredictionPoll({ game, userId }: PredictionPollProps) {
               onClick={() => vote(opt.id)}
               disabled={hasVoted || busy}
               className={`flex-1 relative rounded-xl py-2.5 px-2 text-center transition-all overflow-hidden
-                ${isMyPick ? 'border-2 border-white/60 bg-white/10' : 'border border-white/10 bg-white/5 hover:bg-white/10'}
+                ${isMyPick ? 'border-2 border-white/60 bg-white/10' : 'border border-[#e0dbd3] bg-[#f5f2ee] hover:bg-[#ece7e0]'}
                 ${hasVoted ? 'cursor-default' : 'cursor-pointer'}`}
             >
               {/* Progress fill */}
@@ -91,13 +91,13 @@ function PredictionPoll({ game, userId }: PredictionPollProps) {
               <div className="relative">
                 {opt.college && <CollegeLogo college={opt.college} size={24} className="mx-auto mb-1" />}
                 <p className="text-xs font-bold text-white">{opt.label}</p>
-                {hasVoted && <p className="text-gray-400 text-[10px] mt-0.5">{pct}%</p>}
+                {hasVoted && <p className="text-[#6b7a99] text-[10px] mt-0.5">{pct}%</p>}
               </div>
             </button>
           )
         })}
       </div>
-      {hasVoted && <p className="text-gray-600 text-[10px] text-center mt-2">{total} prediction{total !== 1 ? 's' : ''}</p>}
+      {hasVoted && <p className="text-[#9aaac0] text-[10px] text-center mt-2">{total} prediction{total !== 1 ? 's' : ''}</p>}
     </div>
   )
 }
@@ -119,7 +119,7 @@ function RivalryBadge({ homeCollege, awayCollege }: RivalryBadgeProps) {
   if (!record || record.total === 0) return null
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-3 py-2 px-4 rounded-full bg-black/30 border border-white/10 mx-auto w-fit">
+    <div className="flex items-center justify-center gap-2 mt-3 py-2 px-4 rounded-full bg-black/30 border border-[#e0dbd3] mx-auto w-fit">
       <span className="text-white/60 text-xs font-semibold">Head to Head</span>
       <span className="text-white font-black text-sm">
         {record.winsA} - {record.draws} - {record.winsB}
@@ -145,7 +145,7 @@ export default function GameDetail() {
 
   if (!game) {
     return (
-      <div className="min-h-screen bg-transparent flex items-center justify-center text-gray-400">
+      <div className="min-h-screen bg-transparent flex items-center justify-center text-[#6b7a99]">
         Game not found.
       </div>
     )
@@ -154,7 +154,7 @@ export default function GameDetail() {
   const { home_college, away_college } = game
   const homeRgb = hexToRgb(home_college?.primary_color ?? '#1a1a2e')
   const awayRgb = hexToRgb(away_college?.primary_color ?? '#16213e')
-  const statusColor = GAME_STATUS_COLORS[game.status] ?? 'text-gray-400'
+  const statusColor = GAME_STATUS_COLORS[game.status] ?? 'text-[#6b7a99]'
 
   const betsByMarket: Record<string, any[]> = {}
   bets.forEach((b) => {
@@ -206,7 +206,7 @@ export default function GameDetail() {
               <>
                 <span className="text-white/60 text-xs font-semibold uppercase">Final</span>
                 {game.winning_college && (
-                  <span className="text-yellow-400 text-xs mt-1 font-bold">
+                  <span className="text-amber-600 text-xs mt-1 font-bold">
                     {game.winning_college_id === game.home_college_id
                       ? home_college?.abbreviation
                       : away_college?.abbreviation} WIN
@@ -241,10 +241,10 @@ export default function GameDetail() {
 
       {/* Markets */}
       <div className="px-4 py-5 space-y-4">
-        <h2 className="text-white font-bold text-lg">Bet Markets</h2>
+        <h2 className="text-[#1a2744] font-bold text-lg">Bet Markets</h2>
 
         {game.bet_markets?.length === 0 && (
-          <div className="text-center py-10 text-gray-500">
+          <div className="text-center py-10 text-[#8a9ab0]">
             <p>No markets available for this game yet.</p>
           </div>
         )}

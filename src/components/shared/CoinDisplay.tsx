@@ -16,8 +16,8 @@ export default function CoinDisplay({ amount, size = 'md', className = '' }: Coi
 
   return (
     <span className={`inline-flex items-center gap-1 font-bold ${sizes[size]} ${className}`}>
-      <span className="text-yellow-400">🪙</span>
-      <span className="text-yellow-400">{formatCoins(amount)}</span>
+      <span>🪙</span>
+      <span className="text-amber-600">{formatCoins(amount)}</span>
     </span>
   )
 }

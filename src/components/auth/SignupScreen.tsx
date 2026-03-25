@@ -131,7 +131,7 @@ export default function SignupScreen() {
       <div className="w-full max-w-sm mx-auto">
         <AuthLogo />
 
-        <div className="rounded-3xl border border-white/8 bg-white/[0.04] backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden">
+        <div className="rounded-3xl border border-[#e0dbd3] bg-white backdrop-blur-2xl shadow-2xl shadow-[#c8c0b4]/20 overflow-hidden">
 
           {/* TODO: uncomment step indicator when email verification is enabled */}
           {/* <div className="flex border-b border-white/8">
@@ -140,8 +140,8 @@ export default function SignupScreen() {
                 key={i}
                 className={`flex-1 py-3 text-center text-xs font-semibold tracking-wide transition-colors
                   ${i === (step === STEP.DETAILS ? 0 : 1)
-                    ? 'text-white border-b-2 border-white'
-                    : 'text-gray-600'}`}
+                    ? 'text-[#1a2744] border-b-2 border-[#1a2744]'
+                    : 'text-[#9aaac0]'}`}
               >
                 <span className={`inline-flex items-center justify-center w-4 h-4 rounded-full text-[10px] mr-1.5
                   ${i < (step === STEP.OTP ? 1 : 0) ? 'bg-yellow-400 text-black' : 'bg-white/10 text-gray-500'}`}>
@@ -156,8 +156,8 @@ export default function SignupScreen() {
             {/* ── Step 1: Details ──────────────────────── */}
             {step === STEP.DETAILS && (
               <>
-                <h2 className="text-xl font-bold text-white mb-1">Create account</h2>
-                <p className="text-gray-400 text-sm mb-6">
+                <h2 className="text-xl font-bold text-[#1a2744] mb-1">Create account</h2>
+                <p className="text-[#6b7a99] text-sm mb-6">
                   1,000 coins free to start 🪙
                 </p>
 
@@ -253,7 +253,7 @@ export default function SignupScreen() {
                   ← Back
                 </button>
 
-                <h2 className="text-xl font-bold text-white mb-1">Check your email</h2>
+                <h2 className="text-xl font-bold text-[#1a2744] mb-1">Check your email</h2>
                 <p className="text-gray-400 text-sm mb-1">We sent a 6-digit code to</p>
                 <p className="text-white font-semibold text-sm mb-6 truncate">{email}</p>
 
@@ -284,9 +284,9 @@ export default function SignupScreen() {
           </div>
         </div>
 
-        <p className="text-center text-gray-500 text-sm mt-5">
+        <p className="text-center text-[#8a9ab0] text-sm mt-5">
           Already have an account?{' '}
-          <Link to="/login" className="text-white/80 font-semibold hover:text-white transition-colors">
+          <Link to="/login" className="text-[#1a2744] font-semibold hover:text-[#243060] transition-colors">
             Sign in →
           </Link>
         </p>
@@ -299,7 +299,7 @@ export default function SignupScreen() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5">{label}</label>
+      <label className="block text-xs font-semibold text-[#6b7a99] uppercase tracking-wider mb-1.5">{label}</label>
       {children}
     </div>
   )
@@ -314,7 +314,7 @@ function BtnSpinner() {
   )
 }
 
-const inputCls = 'w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all text-sm'
+const inputCls = 'w-full px-4 py-3 rounded-xl bg-white border border-[#e0dbd3] text-[#1a2744] placeholder-[#9aaac0] focus:outline-none focus:border-[#2563eb] focus:bg-white transition-all text-sm'
 
 function CollegeSelect({ colleges, value, onChange }: CollegeSelectProps) {
   const [open, setOpen]       = useState(false)
@@ -383,7 +383,7 @@ function CollegeSelect({ colleges, value, onChange }: CollegeSelectProps) {
         onClick={() => { setOpen(true); inputRef.current?.focus() }}
       >
         {!open && selected ? (
-          <span className="flex-1 text-white">{selected.name}</span>
+          <span className="flex-1 text-[#1a2744]">{selected.name}</span>
         ) : (
           <input
             ref={inputRef}
@@ -392,19 +392,19 @@ function CollegeSelect({ colleges, value, onChange }: CollegeSelectProps) {
             onKeyDown={handleKeyDown}
             onFocus={() => setOpen(true)}
             placeholder={selected ? selected.name : 'Select your college…'}
-            className="flex-1 bg-transparent outline-none text-white placeholder-gray-500 text-sm"
+            className="flex-1 bg-transparent outline-none text-[#1a2744] placeholder-[#9aaac0] text-sm"
           />
         )}
-        <span className="text-gray-500 text-sm ml-2 select-none">{open ? '▴' : '▾'}</span>
+        <span className="text-[#9aaac0] text-sm ml-2 select-none">{open ? '▴' : '▾'}</span>
       </div>
 
       {open && (
         <ul
           ref={listRef}
-          className="absolute z-50 mt-1 w-full rounded-xl bg-[#13131f] border border-white/10 shadow-xl max-h-48 overflow-y-auto"
+          className="absolute z-50 mt-1 w-full rounded-xl bg-white border border-[#e0dbd3] shadow-xl max-h-48 overflow-y-auto"
         >
           {filtered.length === 0 ? (
-            <li className="px-4 py-3 text-gray-500 text-sm">No colleges found</li>
+            <li className="px-4 py-3 text-[#8a9ab0] text-sm">No colleges found</li>
           ) : (
             filtered.map((c, i) => (
               <li
@@ -412,7 +412,7 @@ function CollegeSelect({ colleges, value, onChange }: CollegeSelectProps) {
                 onMouseDown={() => select(c)}
                 onMouseEnter={() => setCursor(i)}
                 className={`px-4 py-3 text-sm cursor-pointer transition-colors
-                  ${i === cursor ? 'bg-white/8 text-white' : 'text-white hover:bg-white/5'}
+                  ${i === cursor ? 'bg-[#f0ece6] text-[#1a2744]' : 'text-[#1a2744] hover:bg-[#f5f2ee]'}
                   ${c.id === value ? 'font-semibold' : ''}`}
               >
                 {c.name}

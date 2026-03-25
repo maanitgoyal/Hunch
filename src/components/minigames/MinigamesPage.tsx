@@ -245,16 +245,16 @@ function CoinFlip({ userId, coins, onCoinsChanged, onWin, onLose }: CoinFlipProp
 
   const coinBorder = flipping ? 'border-yellow-400'
     : result ? (result.won ? 'border-green-400' : 'border-red-400')
-    : 'border-white/20'
+    : 'border-[#d0c9bf]'
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 space-y-5">
+    <div className="rounded-2xl border border-[#e0dbd3] bg-white p-6 space-y-5">
 
       <div className="flex justify-center">
         <div
           className={`w-20 h-20 rounded-full border-4 flex items-center justify-center text-3xl font-black transition-colors duration-300
             ${flipping ? 'animate-spin' : shaking ? 'card-shake' : ''} ${coinBorder}`}
-          style={{ background: flipping ? 'rgba(234,179,8,0.15)' : 'rgba(255,255,255,0.05)' }}
+          style={{ background: flipping ? 'rgba(234,179,8,0.15)' : 'rgba(26,39,68,0.05)' }}
         >
           {flipping ? '?' : result ? (result.result === 'heads' ? 'H' : 'T') : '?'}
         </div>
@@ -273,7 +273,7 @@ function CoinFlip({ userId, coins, onCoinsChanged, onWin, onLose }: CoinFlipProp
         {['heads', 'tails'].map((c) => (
           <button key={c} onClick={() => setChoice(c)} disabled={busy}
             className={`flex-1 py-3 rounded-xl font-bold text-sm capitalize transition-all border
-              ${choice === c ? 'bg-yellow-400 text-black border-yellow-400' : 'bg-white/5 text-gray-300 border-white/10 hover:border-white/25'}`}>
+              ${choice === c ? 'bg-yellow-400 text-black border-yellow-400' : 'bg-[#f5f2ee] text-[#4a5a7a] border-[#e0dbd3] hover:border-[#ccc4ba]'}`}>
             {c}
           </button>
         ))}
@@ -285,13 +285,13 @@ function CoinFlip({ userId, coins, onCoinsChanged, onWin, onLose }: CoinFlipProp
         <>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Stake</label>
-              <span className="text-yellow-400 font-bold text-sm">🪙 {formatCoins(stake)}</span>
+              <label className="text-xs font-semibold text-[#6b7a99] uppercase tracking-wider">Stake</label>
+              <span className="text-amber-600 font-bold text-sm">🪙 {formatCoins(stake)}</span>
             </div>
             <input type="range" min={10} max={maxStake} step={10} value={stake}
               onChange={(e) => setStake(Number(e.target.value))} disabled={busy}
               className="w-full accent-yellow-400" />
-            <div className="flex justify-between text-gray-600 text-xs">
+            <div className="flex justify-between text-[#9aaac0] text-xs">
               <span>10</span>
               <span>Possible win: 🪙 {formatCoins(Math.floor(stake * 1.9))}</span>
               <span>{maxStake}</span>
@@ -330,20 +330,20 @@ function PlayingCard({ revealed, value, won, shaking }: PlayingCardProps) {
         {/* Front */}
         <div
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
-          className="absolute inset-0 rounded-2xl border-2 border-white/20 bg-gradient-to-br from-[#1a1a3a] to-[#0d0d1f] flex items-center justify-center"
+          className="absolute inset-0 rounded-2xl border-2 border-[#d0c9bf] bg-gradient-to-br from-[#f5f2ee] to-[#ede8e1] flex items-center justify-center"
         >
-          <div className="w-16 h-16 rounded-xl border-2 border-white/10 bg-white/5 flex items-center justify-center">
-            <span className="text-4xl font-black text-white/30">?</span>
+          <div className="w-16 h-16 rounded-xl border-2 border-[#e0dbd3] bg-[#f5f2ee] flex items-center justify-center">
+            <span className="text-4xl font-black text-[#1a2744]/30">?</span>
           </div>
         </div>
         {/* Back */}
         <div
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
           className={`absolute inset-0 rounded-2xl border-2 flex flex-col items-center justify-center gap-1
-            ${won == null ? 'border-white/20 bg-[#1a1a3a]' : won ? 'border-green-400/60 bg-green-500/10' : 'border-red-400/60 bg-red-500/10'}`}
+            ${won == null ? 'border-[#d0c9bf] bg-[#f5f2ee]' : won ? 'border-green-400/60 bg-green-500/10' : 'border-red-400/60 bg-red-500/10'}`}
         >
-          <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Number</span>
-          <span className={`text-5xl font-black ${won ? 'text-green-400' : won === false ? 'text-red-400' : 'text-white'}`}>
+          <span className="text-xs font-bold text-[#8a9ab0] uppercase tracking-widest">Number</span>
+          <span className={`text-5xl font-black ${won ? 'text-green-400' : won === false ? 'text-red-400' : 'text-[#1a2744]'}`}>
             {value ?? '?'}
           </span>
           {won != null && (
@@ -409,7 +409,7 @@ function NumberGuess({ userId, coins, onCoinsChanged, onWin, onLose }: NumberGue
   const rangeEnd   = guess + 2
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 space-y-5">
+    <div className="rounded-2xl border border-[#e0dbd3] bg-white p-6 space-y-5">
 
       <PlayingCard revealed={revealed} value={result?.secret} won={result ? result.won : null} shaking={shaking} />
 
@@ -424,18 +424,18 @@ function NumberGuess({ userId, coins, onCoinsChanged, onWin, onLose }: NumberGue
 
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Guess</label>
-          <span className="text-white font-bold text-sm">
-            Range: <span className="text-white/70">{rangeStart} - {rangeEnd}</span>
+          <label className="text-xs font-semibold text-[#6b7a99] uppercase tracking-wider">Your Guess</label>
+          <span className="text-[#1a2744] font-bold text-sm">
+            Range: <span className="text-[#1a2744]/70">{rangeStart} - {rangeEnd}</span>
           </span>
         </div>
         <input type="range" min={12} max={97} step={1} value={guess}
           onChange={(e) => setGuess(Number(e.target.value))} disabled={busy}
-          className="w-full accent-white" />
+          className="w-full accent-[#1a2744]" />
         <div className="flex justify-center">
-          <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-2 text-center">
-            <p className="text-4xl font-black text-white">{guess}</p>
-            <p className="text-gray-600 text-xs">±2 range</p>
+          <div className="bg-[#f5f2ee] border border-[#e0dbd3] rounded-xl px-6 py-2 text-center">
+            <p className="text-4xl font-black text-[#1a2744]">{guess}</p>
+            <p className="text-[#9aaac0] text-xs">±2 range</p>
           </div>
         </div>
       </div>
@@ -446,20 +446,20 @@ function NumberGuess({ userId, coins, onCoinsChanged, onWin, onLose }: NumberGue
         <>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Stake</label>
-              <span className="text-yellow-400 font-bold text-sm">🪙 {formatCoins(stake)}</span>
+              <label className="text-xs font-semibold text-[#6b7a99] uppercase tracking-wider">Stake</label>
+              <span className="text-amber-600 font-bold text-sm">🪙 {formatCoins(stake)}</span>
             </div>
             <input type="range" min={10} max={maxStake} step={10} value={stake}
               onChange={(e) => setStake(Number(e.target.value))} disabled={busy}
               className="w-full accent-yellow-400" />
-            <div className="flex justify-between text-gray-600 text-xs">
+            <div className="flex justify-between text-[#9aaac0] text-xs">
               <span>10</span>
               <span>Possible win: 🪙 {formatCoins(stake * 15)}</span>
               <span>{maxStake}</span>
             </div>
           </div>
           <button onClick={handleGuess} disabled={busy}
-            className="w-full py-3 rounded-xl font-black text-black bg-white hover:bg-gray-100 disabled:opacity-40 transition-all active:scale-95">
+            className="w-full py-3 rounded-xl font-black text-white bg-[#1a2744] hover:bg-[#243060] disabled:opacity-40 transition-all active:scale-95">
             {busy ? 'Revealing...' : 'Reveal!'}
           </button>
         </>
@@ -513,17 +513,17 @@ function DraftPick({ userId }: DraftPickProps) {
   )
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 space-y-5">
+    <div className="rounded-2xl border border-[#e0dbd3] bg-white p-6 space-y-5">
       <div>
-        <h2 className="text-white font-black text-lg">Season Draft</h2>
-        <p className="text-gray-400 text-sm">Pick 3 colleges. Earn coins every time they win.</p>
+        <h2 className="text-[#1a2744] font-black text-lg">Season Draft</h2>
+        <p className="text-[#6b7a99] text-sm">Pick 3 colleges. Earn coins every time they win.</p>
       </div>
 
       <div className="flex gap-2 text-xs text-center">
         {RANK_BONUSES.map((b, i) => (
-          <div key={i} className="flex-1 bg-white/5 rounded-lg py-2 border border-white/8">
-            <p className="text-yellow-400 font-black">+{b}</p>
-            <p className="text-gray-500">per win ({i + 1}{i === 0 ? 'st' : i === 1 ? 'nd' : 'rd'})</p>
+          <div key={i} className="flex-1 bg-[#f5f2ee] rounded-lg py-2 border border-[#e0dbd3]">
+            <p className="text-amber-600 font-black">+{b}</p>
+            <p className="text-[#8a9ab0]">per win ({i + 1}{i === 0 ? 'st' : i === 1 ? 'nd' : 'rd'})</p>
           </div>
         ))}
       </div>
@@ -532,18 +532,18 @@ function DraftPick({ userId }: DraftPickProps) {
         {picks.map((college, i) => {
           const rank = i + 1
           return (
-            <div key={rank} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-              <span className="text-xs font-black text-gray-500 w-14">{RANK_LABELS[i]}</span>
+            <div key={rank} className="flex items-center gap-3 rounded-xl border border-[#e0dbd3] bg-[#f5f2ee] px-4 py-3">
+              <span className="text-xs font-black text-[#8a9ab0] w-14">{RANK_LABELS[i]}</span>
               {college ? (
                 <>
                   <CollegeLogo college={college} size={32} />
-                  <span className="flex-1 text-white font-semibold text-sm">{college.name}</span>
-                  <button onClick={() => handleRemove(rank)} className="text-xs text-gray-600 hover:text-red-400 transition-colors">Remove</button>
+                  <span className="flex-1 text-[#1a2744] font-semibold text-sm">{college.name}</span>
+                  <button onClick={() => handleRemove(rank)} className="text-xs text-[#9aaac0] hover:text-red-400 transition-colors">Remove</button>
                 </>
               ) : (
                 <>
-                  <div className="flex-1 text-gray-600 text-sm italic">Empty slot</div>
-                  <button onClick={() => { setEditing(rank); setSearch('') }} className="text-xs font-bold text-white/70 hover:text-white transition-colors">+ Pick</button>
+                  <div className="flex-1 text-[#9aaac0] text-sm italic">Empty slot</div>
+                  <button onClick={() => { setEditing(rank); setSearch('') }} className="text-xs font-bold text-[#1a2744]/70 hover:text-[#1a2744] transition-colors">+ Pick</button>
                 </>
               )}
             </div>
@@ -555,18 +555,18 @@ function DraftPick({ userId }: DraftPickProps) {
         <div className="space-y-2">
           <input value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder={`Search college for ${RANK_LABELS[editing - 1]}...`} autoFocus
-            className="w-full px-4 py-2.5 rounded-xl bg-[#111118] border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-white/30 transition-all" />
+            className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#e0dbd3] text-[#1a2744] text-sm placeholder-[#9aaac0] focus:outline-none focus:border-[#2563eb]/40 transition-all" />
           <div className="space-y-1 max-h-48 overflow-y-auto">
             {filtered.map((c) => (
               <button key={c.id} onClick={() => handlePick(c)} disabled={saving}
-                className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/8 transition-all text-left">
+                className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f5f2ee] hover:bg-[#ece7e0] border border-[#e0dbd3] transition-all text-left">
                 <CollegeLogo college={c} size={28} />
-                <span className="text-white text-sm font-medium">{c.name}</span>
+                <span className="text-[#1a2744] text-sm font-medium">{c.name}</span>
               </button>
             ))}
-            {filtered.length === 0 && <p className="text-gray-600 text-sm text-center py-3">No colleges found</p>}
+            {filtered.length === 0 && <p className="text-[#9aaac0] text-sm text-center py-3">No colleges found</p>}
           </div>
-          <button onClick={() => { setEditing(null); setSearch('') }} className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Cancel</button>
+          <button onClick={() => { setEditing(null); setSearch('') }} className="text-xs text-[#9aaac0] hover:text-[#6b7a99] transition-colors">Cancel</button>
         </div>
       )}
     </div>
@@ -603,12 +603,12 @@ export default function MinigamesPage() {
       {/* Header */}
       <div className="flex items-end justify-between">
         <div>
-          <h1 className="text-3xl font-black text-white">Minigames</h1>
-          <p className="text-gray-400 mt-1">Quick games between matches</p>
+          <h1 className="text-3xl font-black text-[#1a2744]">Minigames</h1>
+          <p className="text-[#6b7a99] mt-1">Quick games between matches</p>
         </div>
         <div className="text-right">
-          <p className="text-xs text-gray-500 uppercase tracking-wider">Balance</p>
-          <p className="text-yellow-400 font-black text-lg">🪙 {formatCoins(coins)}</p>
+          <p className="text-xs text-[#8a9ab0] uppercase tracking-wider">Balance</p>
+          <p className="text-amber-600 font-black text-lg">🪙 {formatCoins(coins)}</p>
         </div>
       </div>
 
@@ -620,11 +620,11 @@ export default function MinigamesPage() {
             onClick={() => setActive(t.id)}
             className={`rounded-xl py-3 px-2 text-center transition-all border
               ${active === t.id
-                ? 'bg-white text-black border-white shadow-lg shadow-white/10'
-                : 'bg-white/[0.04] text-gray-400 border-white/8 hover:border-white/20 hover:text-white'}`}
+                ? 'bg-[#1a2744] text-white border-[#1a2744] shadow-lg shadow-[#1a2744]/10'
+                : 'bg-white text-[#6b7a99] border-[#e0dbd3] hover:border-[#d0c9bf] hover:text-[#1a2744]'}`}
           >
-            <p className={`text-xs font-black leading-tight ${active === t.id ? 'text-black' : 'text-white'}`}>{t.label}</p>
-            <p className={`text-[10px] mt-0.5 ${active === t.id ? 'text-black/50' : 'text-gray-600'}`}>{t.sub}</p>
+            <p className={`text-xs font-black leading-tight ${active === t.id ? 'text-white' : 'text-[#1a2744]'}`}>{t.label}</p>
+            <p className={`text-[10px] mt-0.5 ${active === t.id ? 'text-white/50' : 'text-[#9aaac0]'}`}>{t.sub}</p>
           </button>
         ))}
       </div>

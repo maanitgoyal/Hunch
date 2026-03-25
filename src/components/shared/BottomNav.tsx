@@ -68,7 +68,7 @@ export default function BottomNav() {
   return (
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 md:hidden safe-bottom"
-      style={{ background: 'rgba(4,4,6,0.92)', backdropFilter: 'blur(24px)', borderTop: '1px solid rgba(255,255,255,0.07)' }}
+      style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(24px)', borderTop: '1px solid #d8d2ca' }}
     >
       <div className="flex items-stretch">
         {NAV_ITEMS.map(({ to, end, icon: Icon, label }) => (
@@ -78,7 +78,7 @@ export default function BottomNav() {
             end={end}
             className={({ isActive }) =>
               `flex-1 flex flex-col items-center justify-center gap-1 py-2.5 transition-colors
-              ${isActive ? 'text-white' : 'text-gray-600 hover:text-gray-400'}`
+              ${isActive ? 'text-[#1a2744]' : 'text-[#9aaac0] hover:text-[#6b7a99]'}`
             }
           >
             {({ isActive }) => (

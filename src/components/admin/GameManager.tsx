@@ -67,25 +67,25 @@ export default function GameManager({ onSelectGame }: GameManagerProps) {
 
   function field(key: string, val: string) { setForm((f) => ({ ...f, [key]: val })) }
 
-  const inputCls = "w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:border-yellow-400 transition-colors"
-  const selectCls = "w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border border-white/20 text-white text-sm focus:outline-none focus:border-yellow-400 transition-colors"
+  const inputCls = "w-full px-3 py-2 rounded-lg bg-white border border-[#e0dbd3] text-[#1a2744] text-sm focus:outline-none focus:border-[#2563eb] transition-colors"
+  const selectCls = "w-full px-3 py-2 rounded-lg bg-white border border-[#e0dbd3] text-[#1a2744] text-sm focus:outline-none focus:border-[#2563eb] transition-colors"
 
   return (
     <div className="space-y-6">
       {/* Create game form */}
-      <form onSubmit={handleCreate} className="bg-white/5 rounded-2xl p-4 space-y-3 border border-white/10">
-        <h3 className="text-white font-bold">Create Game</h3>
+      <form onSubmit={handleCreate} className="bg-white rounded-2xl p-4 space-y-3 border border-[#e0dbd3]">
+        <h3 className="text-[#1a2744] font-bold">Create Game</h3>
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="text-xs text-gray-400 mb-1 block">Home College</label>
+            <label className="text-xs text-[#6b7a99] mb-1 block">Home College</label>
             <select className={selectCls} value={form.home_college_id} onChange={(e) => field('home_college_id', e.target.value)} required>
               <option value="">Select…</option>
               {colleges.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
           </div>
           <div>
-            <label className="text-xs text-gray-400 mb-1 block">Away College</label>
+            <label className="text-xs text-[#6b7a99] mb-1 block">Away College</label>
             <select className={selectCls} value={form.away_college_id} onChange={(e) => field('away_college_id', e.target.value)} required>
               <option value="">Select…</option>
               {colleges.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -95,13 +95,13 @@ export default function GameManager({ onSelectGame }: GameManagerProps) {
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="text-xs text-gray-400 mb-1 block">Sport</label>
+            <label className="text-xs text-[#6b7a99] mb-1 block">Sport</label>
             <select className={selectCls} value={form.sport} onChange={(e) => field('sport', e.target.value)}>
               {SPORTS.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
           <div>
-            <label className="text-xs text-gray-400 mb-1 block">Game Type</label>
+            <label className="text-xs text-[#6b7a99] mb-1 block">Game Type</label>
             <select className={selectCls} value={form.game_type} onChange={(e) => field('game_type', e.target.value)}>
               {GAME_TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
             </select>
@@ -109,35 +109,35 @@ export default function GameManager({ onSelectGame }: GameManagerProps) {
         </div>
 
         <div>
-          <label className="text-xs text-gray-400 mb-1 block">Date & Time</label>
+          <label className="text-xs text-[#6b7a99] mb-1 block">Date & Time</label>
           <input type="datetime-local" className={inputCls} value={form.scheduled_at} onChange={(e) => field('scheduled_at', e.target.value)} required />
         </div>
 
-        {msg && <p className={`text-sm ${msg.startsWith('Error') ? 'text-red-400' : 'text-green-400'}`}>{msg}</p>}
+        {msg && <p className={`text-sm ${msg.startsWith('Error') ? 'text-red-500' : 'text-green-600'}`}>{msg}</p>}
 
-        <button type="submit" disabled={busy} className="w-full py-2 rounded-xl bg-yellow-400 text-black font-bold text-sm disabled:opacity-50">
+        <button type="submit" disabled={busy} className="w-full py-2 rounded-xl bg-[#1a2744] text-white font-bold text-sm disabled:opacity-50 hover:bg-[#243060] transition-colors">
           {busy ? 'Creating…' : '+ Create Game'}
         </button>
       </form>
 
       {/* Games list */}
       <div className="space-y-2">
-        <h3 className="text-white font-bold text-sm">Recent Games</h3>
+        <h3 className="text-[#1a2744] font-bold text-sm">Recent Games</h3>
         {games.map((g) => (
           <button
             key={g.id}
             onClick={() => onSelectGame(g)}
-            className="w-full text-left bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/10 transition-colors"
+            className="w-full text-left bg-white border border-[#e0dbd3] rounded-xl px-4 py-3 hover:bg-[#f5f2ee] transition-colors"
           >
             <div className="flex items-center justify-between">
-              <span className="text-white text-sm font-semibold">
+              <span className="text-[#1a2744] text-sm font-semibold">
                 {g.home_college?.abbreviation} vs {g.away_college?.abbreviation}
               </span>
-              <span className={`text-xs font-bold ${g.status === 'upcoming' ? 'text-blue-400' : g.status === 'live' ? 'text-green-400' : 'text-gray-400'}`}>
+              <span className={`text-xs font-bold ${g.status === 'upcoming' ? 'text-blue-500' : g.status === 'live' ? 'text-green-500' : 'text-[#8a9ab0]'}`}>
                 {g.status}
               </span>
             </div>
-            <p className="text-gray-400 text-xs mt-0.5">
+            <p className="text-[#6b7a99] text-xs mt-0.5">
               {g.sport} · {formatGameTime(g.scheduled_at)} · {g.bet_markets?.length ?? 0} markets
             </p>
           </button>

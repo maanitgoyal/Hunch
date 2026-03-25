@@ -63,28 +63,28 @@ export default function BetSlip({ market, selectedOptionKey, onSuccess, onClose 
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm"
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="w-full max-w-lg bg-[#0d0d12] rounded-t-3xl border-t border-white/10 p-6 pb-8">
+      <div className="w-full max-w-lg bg-white rounded-t-3xl border-t border-[#e0dbd3] p-6 pb-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-5">
-          <h3 className="text-white font-bold text-lg">Place Bet</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-white text-2xl leading-none">×</button>
+          <h3 className="text-[#1a2744] font-bold text-lg">Place Bet</h3>
+          <button onClick={onClose} className="text-[#6b7a99] hover:text-[#1a2744] text-2xl leading-none">×</button>
         </div>
 
         {/* Selection */}
-        <div className="bg-white/5 rounded-xl p-3 mb-4">
-          <p className="text-gray-400 text-xs mb-1">{market.description}</p>
-          <p className="text-white font-semibold">{option.label}</p>
+        <div className="bg-[#f5f2ee] rounded-xl p-3 mb-4">
+          <p className="text-[#6b7a99] text-xs mb-1">{market.description}</p>
+          <p className="text-[#1a2744] font-semibold">{option.label}</p>
         </div>
 
         {/* Stake input */}
-        <label className="block text-sm text-gray-400 mb-2">Stake (coins)</label>
+        <label className="block text-sm text-[#6b7a99] mb-2">Stake (coins)</label>
         <input
           type="number"
           value={stake}
           min={10}
           max={maxStake}
           onChange={(e) => setStake(Math.max(10, Math.min(maxStake, Number(e.target.value))))}
-          className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white text-xl font-bold text-center focus:outline-none focus:border-yellow-400 transition-colors mb-3"
+          className="w-full px-4 py-3 rounded-xl bg-[#ece7e0] border border-[#d0c9bf] text-[#1a2744] text-xl font-bold text-center focus:outline-none focus:border-yellow-400 transition-colors mb-3"
         />
 
         <input
@@ -104,7 +104,7 @@ export default function BetSlip({ market, selectedOptionKey, onSuccess, onClose 
               key={amt}
               onClick={() => setStake(Math.min(amt, maxStake))}
               disabled={amt > maxStake}
-              className="flex-1 py-1.5 rounded-lg text-xs font-semibold bg-white/10 text-gray-300 hover:bg-white/20 disabled:opacity-30 transition-colors"
+              className="flex-1 py-1.5 rounded-lg text-xs font-semibold bg-[#ece7e0] text-[#4a5a7a] hover:bg-[#e8e2da] disabled:opacity-30 transition-colors"
             >
               {amt}
             </button>
@@ -112,17 +112,17 @@ export default function BetSlip({ market, selectedOptionKey, onSuccess, onClose 
         </div>
 
         {/* Locked payout */}
-        <div className="bg-white/5 rounded-xl px-4 py-3 mb-2">
+        <div className="bg-[#f5f2ee] rounded-xl px-4 py-3 mb-2">
           <div className="flex items-center justify-between">
-            <span className="text-gray-400 text-sm">Locked return</span>
+            <span className="text-[#6b7a99] text-sm">Locked return</span>
             <span className="text-green-400 font-black text-xl">🪙 {formatCoins(lockedPayout)}</span>
           </div>
           <div className="flex items-center justify-between mt-1">
-            <span className="text-gray-600 text-xs">Your odds (locked on confirm)</span>
-            <span className="text-yellow-400 text-xs font-bold">{lockedMultiplier.toFixed(2)}x</span>
+            <span className="text-[#9aaac0] text-xs">Your odds (locked on confirm)</span>
+            <span className="text-amber-600 text-xs font-bold">{lockedMultiplier.toFixed(2)}x</span>
           </div>
         </div>
-        <p className="text-gray-600 text-[10px] text-center mb-4">
+        <p className="text-[#9aaac0] text-[10px] text-center mb-4">
           This return is locked the moment you confirm. Odds shift as others bet.
         </p>
 
@@ -136,7 +136,7 @@ export default function BetSlip({ market, selectedOptionKey, onSuccess, onClose 
           {busy ? 'Placing...' : `Bet ${formatCoins(stake)} coins →`}
         </button>
 
-        <p className="text-center text-gray-500 text-xs mt-3">
+        <p className="text-center text-[#8a9ab0] text-xs mt-3">
           Balance: 🪙 {formatCoins(profile?.coins ?? 0)}
         </p>
       </div>

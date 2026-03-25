@@ -33,29 +33,29 @@ export default function TopNav() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06]"
-      style={{ background: 'rgba(2,2,2,0.82)', backdropFilter: 'blur(24px)' }}
+      className="fixed top-0 left-0 right-0 z-50 border-b border-[#d8d2ca]"
+      style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(24px)' }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-6 relative" style={{ height: '60px' }}>
+      <div className="max-w-7xl mx-auto px-6 flex items-center gap-4" style={{ height: '60px' }}>
 
         {/* Logo */}
-        <NavLink to="/" className="flex items-center gap-2 shrink-0 group z-10">
+        <NavLink to="/" className="flex items-center gap-2 shrink-0 group">
           <HunchLogo size={36} className="drop-shadow-lg transition-all" />
-          <span style={LOGO_FONT} className="text-white">Hunch</span>
+          <span style={LOGO_FONT} className="text-[#1a2744]">Hunch</span>
         </NavLink>
 
-        {/* Desktop nav — absolutely centred in the bar */}
-        <div className="hidden md:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center overflow-x-auto no-scrollbar">
           {links.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               end={link.end}
               className={({ isActive }) =>
-                `px-4 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap
+                `px-3.5 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap
                 ${isActive
-                  ? 'bg-white/10 text-white'
-                  : 'text-gray-400 hover:text-white hover:bg-white/6'}`
+                  ? 'bg-[#1a2744]/8 text-[#1a2744] font-bold'
+                  : 'text-[#6b7a99] hover:text-[#1a2744] hover:bg-[#f0ece6]'}`
               }
             >
               {link.label}
@@ -64,22 +64,22 @@ export default function TopNav() {
         </div>
 
         {/* Right */}
-        <div className="hidden md:flex items-center gap-3 shrink-0 ml-auto z-10">
+        <div className="hidden md:flex items-center gap-3 shrink-0 ml-auto">
           {profile && (
             <>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/6 border border-white/8">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#f5f2ee] border border-[#e0dbd3]">
                 <CoinDisplay amount={profile.coins} size="sm" />
               </div>
               <div className="h-4 w-px bg-white/10" />
               <NavLink
                 to="/profile"
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                className="text-sm font-medium text-[#6b7a99] hover:text-[#1a2744] transition-colors"
               >
                 {profile.display_name}
               </NavLink>
               <button
                 onClick={handleSignOut}
-                className="text-xs text-gray-600 hover:text-gray-300 transition-colors px-2 py-1 rounded hover:bg-white/6"
+                className="text-xs text-[#9aaac0] hover:text-[#6b7a99] transition-colors px-2 py-1 rounded hover:bg-[#f0ece6]"
               >
                 Sign out
               </button>
@@ -90,12 +90,12 @@ export default function TopNav() {
         {/* Mobile: coins + profile */}
         {profile && (
           <div className="md:hidden flex items-center gap-2">
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/6 border border-white/8">
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#f5f2ee] border border-[#e0dbd3]">
               <CoinDisplay amount={profile.coins} size="sm" />
             </div>
             <NavLink
               to="/profile"
-              className="w-8 h-8 rounded-xl flex items-center justify-center bg-white/6 border border-white/8 text-white font-bold text-sm"
+              className="w-8 h-8 rounded-xl flex items-center justify-center bg-[#f5f2ee] border border-[#e0dbd3] text-[#1a2744] font-bold text-sm"
             >
               {(profile.display_name ?? 'U').trim()[0].toUpperCase()}
             </NavLink>

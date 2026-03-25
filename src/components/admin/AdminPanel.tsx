@@ -28,16 +28,16 @@ export default function AdminPanel() {
   }
 
   return (
-    <div className="min-h-full bg-[#0f0f1a] pt-4">
+    <div className="min-h-full bg-[#ede8e1] pt-4">
       {/* Header */}
       <div className="px-4 mb-4 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white">Hunch Admin</h1>
-          <p className="text-gray-400 text-sm">{profile?.display_name}</p>
+          <h1 className="text-2xl font-black text-[#1a2744]">Hunch Admin</h1>
+          <p className="text-[#6b7a99] text-sm">{profile?.display_name}</p>
         </div>
         <button
           onClick={async () => { await signOut(); navigate('/login') }}
-          className="text-sm text-gray-400 hover:text-white"
+          className="text-sm text-[#6b7a99] hover:text-[#1a2744] transition-colors"
         >
           Sign out
         </button>
@@ -51,7 +51,7 @@ export default function AdminPanel() {
               key={t}
               onClick={() => setTab(t)}
               className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all
-                ${tab === t ? 'bg-yellow-400 text-black' : 'bg-white/10 text-gray-400 hover:bg-white/15'}`}
+                ${tab === t ? 'bg-[#1a2744] text-white' : 'bg-white text-[#6b7a99] border border-[#e0dbd3] hover:bg-[#f5f2ee]'}`}
             >
               {t}
             </button>
@@ -68,22 +68,22 @@ export default function AdminPanel() {
         {/* Game selected — show options */}
         {tab === 'Games' && selectedGame && !subView && (
           <div className="space-y-3">
-            <button onClick={clearGame} className="text-gray-400 text-sm hover:text-white">← All Games</button>
-            <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3">
-              <p className="text-white font-bold">
+            <button onClick={clearGame} className="text-[#6b7a99] text-sm hover:text-[#1a2744] transition-colors">← All Games</button>
+            <div className="bg-white border border-[#e0dbd3] rounded-xl px-4 py-3">
+              <p className="text-[#1a2744] font-bold">
                 {selectedGame.home_college?.abbreviation} vs {selectedGame.away_college?.abbreviation}
               </p>
-              <p className="text-gray-400 text-xs">{selectedGame.sport} · {selectedGame.status}</p>
+              <p className="text-[#6b7a99] text-xs">{selectedGame.sport} · {selectedGame.status}</p>
             </div>
             <button
               onClick={() => setSubView('markets')}
-              className="w-full py-3 rounded-xl bg-white/10 text-white font-semibold hover:bg-white/15 transition-colors text-sm"
+              className="w-full py-3 rounded-xl bg-white border border-[#e0dbd3] text-[#1a2744] font-semibold hover:bg-[#f5f2ee] transition-colors text-sm"
             >
               📊 Manage Markets
             </button>
             <button
               onClick={() => setSubView('score')}
-              className="w-full py-3 rounded-xl bg-white/10 text-white font-semibold hover:bg-white/15 transition-colors text-sm"
+              className="w-full py-3 rounded-xl bg-[#1a2744] text-white font-semibold hover:bg-[#243060] transition-colors text-sm"
             >
               ⚡ Enter Scores & Resolve
             </button>

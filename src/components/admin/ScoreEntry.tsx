@@ -51,19 +51,19 @@ export default function ScoreEntry({ game, onDone }: ScoreEntryProps) {
     setTimeout(() => { setMsg(''); onDone() }, 3000)
   }
 
-  const inputCls = "w-full px-3 py-3 rounded-lg bg-white/10 border border-white/20 text-white text-2xl font-black text-center focus:outline-none focus:border-yellow-400 transition-colors"
+  const inputCls = "w-full px-3 py-3 rounded-lg bg-white border border-[#e0dbd3] text-[#1a2744] text-2xl font-black text-center focus:outline-none focus:border-[#2563eb] transition-colors"
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-white font-bold">Enter Final Score</h3>
-        <button onClick={onDone} className="text-gray-400 text-sm hover:text-white">← Back</button>
+        <h3 className="text-[#1a2744] font-bold">Enter Final Score</h3>
+        <button onClick={onDone} className="text-[#6b7a99] text-sm hover:text-[#1a2744] transition-colors">← Back</button>
       </div>
 
-      <form onSubmit={handleResolve} className="bg-white/5 rounded-2xl p-4 space-y-4 border border-white/10">
+      <form onSubmit={handleResolve} className="bg-white rounded-2xl p-4 space-y-4 border border-[#e0dbd3]">
         <div className="flex items-center gap-4">
           <div className="flex-1">
-            <label className="text-xs text-gray-400 mb-1 block text-center">{homeAbbr}</label>
+            <label className="text-xs text-[#6b7a99] mb-1 block text-center">{homeAbbr}</label>
             <input
               type="number"
               min={0}
@@ -73,9 +73,9 @@ export default function ScoreEntry({ game, onDone }: ScoreEntryProps) {
               placeholder="0"
             />
           </div>
-          <div className="text-gray-500 font-black text-xl pb-4">–</div>
+          <div className="text-[#9aaac0] font-black text-xl pb-4">–</div>
           <div className="flex-1">
-            <label className="text-xs text-gray-400 mb-1 block text-center">{awayAbbr}</label>
+            <label className="text-xs text-[#6b7a99] mb-1 block text-center">{awayAbbr}</label>
             <input
               type="number"
               min={0}
@@ -87,12 +87,12 @@ export default function ScoreEntry({ game, onDone }: ScoreEntryProps) {
           </div>
         </div>
 
-        {msg && <p className={`text-sm text-center ${msg.startsWith('Error') ? 'text-red-400' : 'text-green-400'}`}>{msg}</p>}
+        {msg && <p className={`text-sm text-center ${msg.startsWith('Error') ? 'text-red-500' : 'text-green-600'}`}>{msg}</p>}
 
         <button
           type="submit"
           disabled={busy || game.status === 'completed'}
-          className="w-full py-3 rounded-xl bg-yellow-400 text-black font-bold disabled:opacity-50"
+          className="w-full py-3 rounded-xl bg-[#1a2744] text-white font-bold hover:bg-[#243060] transition-colors disabled:opacity-50"
         >
           {busy ? 'Resolving…' : game.status === 'completed' ? 'Already resolved' : '⚡ Resolve & Settle Bets'}
         </button>
@@ -102,7 +102,7 @@ export default function ScoreEntry({ game, onDone }: ScoreEntryProps) {
             type="button"
             onClick={handleCancel}
             disabled={busy}
-            className="w-full py-2 rounded-xl bg-red-500/20 text-red-400 border border-red-400/30 text-sm font-semibold disabled:opacity-50"
+            className="w-full py-2 rounded-xl bg-red-500/10 text-red-500 border border-red-400/30 text-sm font-semibold disabled:opacity-50 hover:bg-red-500/20 transition-colors"
           >
             Cancel game & refund all bets
           </button>

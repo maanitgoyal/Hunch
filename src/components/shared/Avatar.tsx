@@ -22,10 +22,10 @@ export default function Avatar({ profile, size = 64, className = '' }: AvatarPro
         width: size,
         height: size,
         background: emoji
-          ? 'rgba(255,255,255,0.07)'
+          ? 'rgba(26,39,68,0.07)'
           : `linear-gradient(145deg, ${color}ee, ${color}55)`,
         border: emoji
-          ? '1px solid rgba(255,255,255,0.12)'
+          ? '1px solid rgba(26,39,68,0.12)'
           : `1px solid ${color}44`,
         boxShadow: `0 8px 32px ${color}33`,
         fontSize: emoji ? size * 0.52 : size * 0.38,

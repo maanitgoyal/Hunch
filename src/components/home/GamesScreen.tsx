@@ -13,13 +13,16 @@ export default function GamesScreen() {
   const { bets } = useBets(profile?.id)
 
   const betGameIds = bets.map((b) => b.game_id)
+  const displayGames = filter === 'upcoming'
+    ? games.filter((g) => new Date(g.scheduled_at) > new Date())
+    : games
 
   return (
     <div className="space-y-8">
       {/* Page title */}
       <div>
-        <h1 className="text-3xl font-black text-white">Games</h1>
-        <p className="text-gray-400 mt-1">Place your predictions and climb the leaderboard</p>
+        <h1 className="text-3xl font-black text-[#1a2744]">Games</h1>
+        <p className="text-[#6b7a99] mt-1">Place your predictions and climb the leaderboard</p>
       </div>
 
       {/* Filter tabs */}
@@ -31,8 +34,8 @@ export default function GamesScreen() {
             className={`
               px-5 py-2 rounded-xl text-sm font-semibold capitalize transition-all
               ${filter === f
-                ? 'bg-white text-black shadow-lg shadow-white/10'
-                : 'bg-white/6 text-gray-400 hover:bg-white/10 hover:text-white border border-white/8'}
+                ? 'bg-[#1a2744] text-white shadow-lg shadow-[#1a2744]/10'
+                : 'bg-[#f5f2ee] text-[#6b7a99] hover:bg-[#ece7e0] hover:text-[#1a2744] border border-[#e0dbd3]'}
             `}
           >
             {f}
@@ -41,7 +44,7 @@ export default function GamesScreen() {
 
         <button
           onClick={() => refresh()}
-          className="ml-auto px-3 py-2 rounded-xl text-sm text-gray-500 hover:text-gray-300 bg-white/5 hover:bg-white/10 transition-all border border-white/8"
+          className="ml-auto px-3 py-2 rounded-xl text-sm text-[#8a9ab0] hover:text-[#4a5a7a] bg-[#f5f2ee] hover:bg-[#ece7e0] transition-all border border-[#e0dbd3]"
           title="Refresh"
         >
           Refresh
@@ -52,18 +55,18 @@ export default function GamesScreen() {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="rounded-2xl bg-white/5 h-52 animate-pulse" />
+            <div key={i} className="rounded-2xl bg-[#f5f2ee] h-52 animate-pulse" />
           ))}
         </div>
-      ) : games.length === 0 ? (
-        <div className="text-center py-24 text-gray-500">
+      ) : displayGames.length === 0 ? (
+        <div className="text-center py-24 text-[#8a9ab0]">
           <div className="text-5xl mb-4">🏟️</div>
           <p className="font-semibold text-lg">No {filter} games</p>
           <p className="text-sm mt-1">Check back soon</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {games.map((game) => (
+          {displayGames.map((game) => (
             <GameCard key={game.id} game={game} userBetGameIds={betGameIds} />
           ))}
         </div>

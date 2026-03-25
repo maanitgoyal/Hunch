@@ -12,10 +12,10 @@ function BetDemo() {
         <div className="text-5xl">🎉</div>
         <p className="text-green-400 font-black text-lg">Bet placed!</p>
         <div className="bg-green-500/10 border border-green-500/25 rounded-xl px-5 py-3 text-center">
-          <p className="text-white font-bold text-sm">Warrane to win · 1.85x</p>
-          <p className="text-gray-400 text-xs mt-1">Stake: 🪙 {stake} · Potential win: 🪙 {payout}</p>
+          <p className="text-[#1a2744] font-bold text-sm">Warrane to win · 1.85x</p>
+          <p className="text-[#6b7a99] text-xs mt-1">Stake: 🪙 {stake} · Potential win: 🪙 {payout}</p>
         </div>
-        <p className="text-gray-500 text-xs">Your bet is locked in. Good luck!</p>
+        <p className="text-[#8a9ab0] text-xs">Your bet is locked in. Good luck!</p>
       </div>
     )
   }
@@ -23,27 +23,27 @@ function BetDemo() {
   if (phase === 1) {
     return (
       <div className="space-y-3">
-        <div className="flex items-center gap-2 bg-white/8 border border-white/20 rounded-xl px-3 py-2">
-          <span className="text-white/80 text-xs font-bold">✓ Warrane to win · 1.85x</span>
+        <div className="flex items-center gap-2 bg-[#f0ece6] border border-[#d0c9bf] rounded-xl px-3 py-2">
+          <span className="text-[#1a2744]/80 text-xs font-bold">✓ Warrane to win · 1.85x</span>
         </div>
         <div className="space-y-2">
-          <div className="flex justify-between text-xs text-gray-400">
+          <div className="flex justify-between text-xs text-[#6b7a99]">
             <span>Stake</span>
-            <span className="text-white font-bold">🪙 {stake}</span>
+            <span className="text-[#1a2744] font-bold">🪙 {stake}</span>
           </div>
           <input
             type="range" min={10} max={200} step={10}
             value={stake}
             onChange={(e) => setStake(Number(e.target.value))}
-            className="w-full accent-white"
+            className="w-full accent-[#1a2744]"
           />
-          <div className="flex justify-between text-xs text-gray-500">
+          <div className="flex justify-between text-xs text-[#8a9ab0]">
             <span>10</span><span>200</span>
           </div>
         </div>
         <div className="flex justify-between text-xs px-1">
-          <span className="text-gray-400">Potential payout</span>
-          <span className="text-yellow-400 font-bold">🪙 {payout}</span>
+          <span className="text-[#6b7a99]">Potential payout</span>
+          <span className="text-amber-600 font-bold">🪙 {payout}</span>
         </div>
         <button
           onClick={() => setPhase(2)}
@@ -58,24 +58,24 @@ function BetDemo() {
 
   return (
     <div className="space-y-3">
-      <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className="rounded-xl border border-[#e0dbd3] bg-[#f5f2ee] p-3">
         <div className="flex items-center justify-between mb-2">
           <span className="text-[10px] font-bold text-green-400 uppercase tracking-wider">● Live</span>
-          <span className="text-[10px] text-gray-500">⚽ Soccer</span>
+          <span className="text-[10px] text-[#8a9ab0]">⚽ Soccer</span>
         </div>
         <div className="flex items-center justify-between px-2">
           <div className="text-center">
             <div className="w-9 h-9 rounded-lg bg-blue-500/30 flex items-center justify-center text-xs font-black text-white mx-auto">WA</div>
-            <p className="text-white text-xs font-bold mt-1">Warrane</p>
+            <p className="text-[#1a2744] text-xs font-bold mt-1">Warrane</p>
           </div>
-          <span className="text-white/30 font-black text-lg">VS</span>
+          <span className="text-[#1a2744]/30 font-black text-lg">VS</span>
           <div className="text-center">
             <div className="w-9 h-9 rounded-lg bg-red-500/30 flex items-center justify-center text-xs font-black text-white mx-auto">RH</div>
-            <p className="text-white text-xs font-bold mt-1">Roundhouse</p>
+            <p className="text-[#1a2744] text-xs font-bold mt-1">Roundhouse</p>
           </div>
         </div>
       </div>
-      <p className="text-gray-400 text-xs font-semibold px-1">Match Winner - tap to select</p>
+      <p className="text-[#6b7a99] text-xs font-semibold px-1">Match Winner - tap to select</p>
       <div className="grid grid-cols-3 gap-2">
         {[
           { label: 'Warrane',    odds: '1.85x' },
@@ -87,15 +87,15 @@ function BetDemo() {
             onClick={() => label === 'Warrane' && setPhase(1)}
             className={`rounded-xl py-2 px-1 border text-center transition-all
               ${label === 'Warrane'
-                ? 'bg-white/12 border-white/30 hover:bg-white/18 cursor-pointer'
-                : 'bg-white/5 border-white/8 opacity-60 cursor-default'}`}
+                ? 'bg-[#ece7e0] border-[#d0c9bf] hover:bg-[#e8e2da] cursor-pointer'
+                : 'bg-[#f5f2ee] border-[#e0dbd3] opacity-60 cursor-default'}`}
           >
-            <p className="text-white text-[10px] font-bold leading-tight">{label}</p>
-            <p className="text-white/80 text-xs font-black mt-0.5">{odds}</p>
+            <p className="text-[#1a2744] text-[10px] font-bold leading-tight">{label}</p>
+            <p className="text-[#1a2744]/80 text-xs font-black mt-0.5">{odds}</p>
           </button>
         ))}
       </div>
-      <p className="text-gray-600 text-[10px] text-center">Tap <span className="text-white/80">Warrane</span> to continue</p>
+      <p className="text-[#9aaac0] text-[10px] text-center">Tap <span className="text-[#1a2744]/80">Warrane</span> to continue</p>
     </div>
   )
 }
@@ -124,13 +124,13 @@ function MinigamesDemo() {
     return (
       <div className="space-y-3">
         <div className="flex items-center gap-2 mb-1">
-          <button onClick={reset} className="text-gray-500 hover:text-gray-300 text-xs transition-colors">← Back</button>
-          <p className="text-white font-bold text-sm">Coin Flip - 1.9x payout</p>
+          <button onClick={reset} className="text-[#8a9ab0] hover:text-[#4a5a7a] text-xs transition-colors">← Back</button>
+          <p className="text-[#1a2744] font-bold text-sm">Coin Flip - 1.9x payout</p>
         </div>
 
         {!flipped ? (
           <>
-            <p className="text-gray-400 text-xs">Pick heads or tails, then flip:</p>
+            <p className="text-[#6b7a99] text-xs">Pick heads or tails, then flip:</p>
             <div className="grid grid-cols-2 gap-2">
               {['heads', 'tails'].map((side) => (
                 <button
@@ -139,7 +139,7 @@ function MinigamesDemo() {
                   className={`py-3 rounded-xl border text-sm font-bold capitalize transition-all
                     ${choice === side
                       ? 'bg-yellow-400/20 border-yellow-400/50 text-yellow-300'
-                      : 'bg-white/5 border-white/8 text-gray-400 hover:bg-white/10 hover:text-white'}`}
+                      : 'bg-[#f5f2ee] border-[#e0dbd3] text-[#6b7a99] hover:bg-[#ece7e0] hover:text-[#1a2744]'}`}
                 >
                   {side === 'heads' ? '🪙 Heads' : '🌑 Tails'}
                 </button>
@@ -160,7 +160,7 @@ function MinigamesDemo() {
             <p className={`font-black text-lg ${result === 'win' ? 'text-green-400' : 'text-red-400'}`}>
               {result === 'win' ? 'You won! +1.9x' : 'Unlucky - try again!'}
             </p>
-            <p className="text-gray-500 text-xs">
+            <p className="text-[#8a9ab0] text-xs">
               It landed {result === 'win' ? choice : (choice === 'heads' ? 'tails' : 'heads')}
             </p>
             <button
@@ -178,7 +178,7 @@ function MinigamesDemo() {
 
   return (
     <div className="space-y-2">
-      <p className="text-gray-400 text-xs px-1 pb-1">Three minigames available - tap to try:</p>
+      <p className="text-[#6b7a99] text-xs px-1 pb-1">Three minigames available - tap to try:</p>
 
       <button
         onClick={() => setGame('coinflip')}
@@ -186,26 +186,26 @@ function MinigamesDemo() {
       >
         <span className="text-2xl">🪙</span>
         <div className="flex-1">
-          <p className="text-white font-bold text-sm">Coin Flip</p>
-          <p className="text-gray-500 text-xs">Pick heads or tails. Win 1.9x your stake.</p>
+          <p className="text-[#1a2744] font-bold text-sm">Coin Flip</p>
+          <p className="text-[#8a9ab0] text-xs">Pick heads or tails. Win 1.9x your stake.</p>
         </div>
-        <span className="text-yellow-400 text-xs font-bold">Try it</span>
+        <span className="text-amber-600 text-xs font-bold">Try it</span>
       </button>
 
-      <div className="flex items-center gap-3 p-3 rounded-xl bg-white/8 border border-white/20">
+      <div className="flex items-center gap-3 p-3 rounded-xl bg-[#f0ece6] border border-[#d0c9bf]">
         <span className="text-2xl">🎴</span>
         <div className="flex-1">
-          <p className="text-white font-bold text-sm">Number Guess</p>
-          <p className="text-gray-500 text-xs">Pick a 2-digit number. Land within +-2 to win 15x.</p>
+          <p className="text-[#1a2744] font-bold text-sm">Number Guess</p>
+          <p className="text-[#8a9ab0] text-xs">Pick a 2-digit number. Land within +-2 to win 15x.</p>
         </div>
-        <span className="text-white/80 text-xs font-bold bg-white/8 px-2 py-0.5 rounded-full">High risk</span>
+        <span className="text-[#1a2744]/80 text-xs font-bold bg-[#f0ece6] px-2 py-0.5 rounded-full">High risk</span>
       </div>
 
       <div className="flex items-center gap-3 p-3 rounded-xl bg-pink-500/10 border border-pink-400/25">
         <span className="text-2xl">🏅</span>
         <div className="flex-1">
-          <p className="text-white font-bold text-sm">Season Draft</p>
-          <p className="text-gray-500 text-xs">Pick 3 colleges. Earn bonus coins every time they win.</p>
+          <p className="text-[#1a2744] font-bold text-sm">Season Draft</p>
+          <p className="text-[#8a9ab0] text-xs">Pick 3 colleges. Earn bonus coins every time they win.</p>
         </div>
         <span className="text-pink-400 text-xs font-bold bg-pink-400/10 px-2 py-0.5 rounded-full">Passive</span>
       </div>
@@ -226,20 +226,20 @@ function LeaderboardDemo() {
         <div
           key={r.name}
           className={`flex items-center gap-3 rounded-xl px-3 py-2.5 border
-            ${r.you ? 'bg-yellow-400/10 border-yellow-400/30' : 'bg-white/5 border-white/8'}`}
+            ${r.you ? 'bg-yellow-400/10 border-yellow-400/30' : 'bg-[#f5f2ee] border-[#e0dbd3]'}`}
         >
-          <span className={`w-6 text-center font-black ${i === 0 ? 'text-yellow-400' : 'text-gray-400'}`}>
+          <span className={`w-6 text-center font-black ${i === 0 ? 'text-amber-600' : 'text-[#6b7a99]'}`}>
             {i === 0 ? '🥇' : `#${i + 1}`}
           </span>
-          <span className={`flex-1 font-bold text-xs ${r.you ? 'text-yellow-300' : 'text-white'}`}>
+          <span className={`flex-1 font-bold text-xs ${r.you ? 'text-yellow-300' : 'text-[#1a2744]'}`}>
             {r.name} {r.you && '(you)'}{' '}
             {r.streak >= 3 && <span className="text-orange-400">🔥{r.streak}</span>}
           </span>
-          <span className="text-yellow-400 font-black text-xs">🪙 {r.coins.toLocaleString()}</span>
+          <span className="text-amber-600 font-black text-xs">🪙 {r.coins.toLocaleString()}</span>
         </div>
       ))}
-      <p className="text-gray-500 text-xs text-center pt-1">
-        Switch to <span className="text-white/80">Colleges</span> tab to see your college rank
+      <p className="text-[#8a9ab0] text-xs text-center pt-1">
+        Switch to <span className="text-[#1a2744]/80">Colleges</span> tab to see your college rank
       </p>
     </div>
   )
@@ -251,23 +251,23 @@ function AvatarDemo() {
   const emojis = ['🦁','🐯','🦊','🐺','🦅','🐻','🔥','⚡','💫','👑','🎯','🏆']
   return (
     <div className="space-y-3">
-      <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/8 rounded-xl">
+      <div className="flex items-center gap-4 p-3 bg-[#f5f2ee] border border-[#e0dbd3] rounded-xl">
         <div
           className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl border"
           style={{
-            background: picked ? 'rgba(255,255,255,0.07)' : 'rgba(8,145,178,0.3)',
-            borderColor: picked ? 'rgba(255,255,255,0.12)' : 'rgba(8,145,178,0.4)',
+            background: picked ? 'rgba(26,39,68,0.07)' : 'rgba(8,145,178,0.3)',
+            borderColor: picked ? 'rgba(26,39,68,0.12)' : 'rgba(8,145,178,0.4)',
           }}
         >
           {picked ?? 'M'}
         </div>
         <div>
-          <p className="text-white font-bold text-sm">maanitgoyal</p>
-          <p className="text-gray-500 text-xs">Warrane College</p>
-          <p className="text-yellow-400 text-xs mt-0.5">🪙 665</p>
+          <p className="text-[#1a2744] font-bold text-sm">maanitgoyal</p>
+          <p className="text-[#8a9ab0] text-xs">Warrane College</p>
+          <p className="text-amber-600 text-xs mt-0.5">🪙 665</p>
         </div>
       </div>
-      <p className="text-gray-400 text-xs px-1">Choose your avatar:</p>
+      <p className="text-[#6b7a99] text-xs px-1">Choose your avatar:</p>
       <div className="grid grid-cols-6 gap-1.5">
         {emojis.map((e) => (
           <button
@@ -275,8 +275,8 @@ function AvatarDemo() {
             onClick={() => setPicked(e)}
             className={`aspect-square rounded-lg text-xl flex items-center justify-center transition-all hover:scale-110
               ${picked === e
-                ? 'bg-white/15 border border-white/40 scale-110'
-                : 'bg-white/5 border-white/8 hover:bg-white/10'}`}
+                ? 'bg-[#e8e2da] border border-[#d8d2ca] scale-110'
+                : 'bg-[#f5f2ee] border-[#e0dbd3] hover:bg-[#ece7e0]'}`}
           >
             {e}
           </button>
@@ -346,28 +346,28 @@ export default function TutorialModal({ onClose }: TutorialModalProps) {
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      style={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)' }}
+      style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)' }}
     >
       <div
-        className="relative w-full max-w-sm rounded-3xl border border-white/10 flex flex-col overflow-hidden max-h-[90vh]"
-        style={{ background: 'rgba(10,12,16,0.98)' }}
+        className="relative w-full max-w-sm rounded-3xl border border-[#e0dbd3] flex flex-col overflow-hidden max-h-[90vh]"
+        style={{ background: 'rgba(255,255,255,0.98)' }}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-5 pb-3 shrink-0">
           <div className="flex items-center gap-2">
             <span className="text-2xl">{s.emoji}</span>
-            <h2 className="text-base font-black text-white">{s.title}</h2>
+            <h2 className="text-base font-black text-[#1a2744]">{s.title}</h2>
           </div>
-          <button onClick={onClose} className="text-xs text-gray-600 hover:text-gray-400 transition-colors">
+          <button onClick={onClose} className="text-xs text-[#9aaac0] hover:text-[#6b7a99] transition-colors">
             Skip
           </button>
         </div>
 
         {/* Body */}
         <div className="px-6 overflow-y-auto flex-1 space-y-4 pb-2">
-          <p className="text-gray-400 text-sm leading-relaxed">{s.body}</p>
+          <p className="text-[#6b7a99] text-sm leading-relaxed">{s.body}</p>
           {s.demo && (
-            <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-3">
+            <div className="rounded-2xl border border-[#e0dbd3] bg-[#f5f2ee] p-3">
               {s.demo}
             </div>
           )}
@@ -384,7 +384,7 @@ export default function TutorialModal({ onClose }: TutorialModalProps) {
                 style={{
                   width: i === step ? '18px' : '6px',
                   height: '6px',
-                  background: i === step ? '#a78bfa' : 'rgba(255,255,255,0.2)',
+                  background: i === step ? '#1a2744' : 'rgba(26,39,68,0.2)',
                 }}
               />
             ))}
@@ -394,7 +394,7 @@ export default function TutorialModal({ onClose }: TutorialModalProps) {
             {step > 0 && (
               <button
                 onClick={() => setStep((s) => s - 1)}
-                className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-gray-400 bg-white/6 border border-white/8 hover:bg-white/10 transition-all"
+                className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-[#6b7a99] bg-[#f5f2ee] border border-[#e0dbd3] hover:bg-[#ece7e0] transition-all"
               >
                 Back
               </button>

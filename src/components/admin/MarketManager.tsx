@@ -90,37 +90,37 @@ export default function MarketManager({ game, onDone }: MarketManagerProps) {
     setTimeout(() => setMsg(''), 3000)
   }
 
-  const inputCls = "w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:border-yellow-400 transition-colors"
+  const inputCls = "w-full px-3 py-2 rounded-lg bg-white border border-[#e0dbd3] text-[#1a2744] text-sm focus:outline-none focus:border-[#2563eb] transition-colors"
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-white font-bold">
+        <h3 className="text-[#1a2744] font-bold">
           Markets: {homeAbbr} vs {awayAbbr}
         </h3>
-        <button onClick={onDone} className="text-gray-400 text-sm hover:text-white">← Back</button>
+        <button onClick={onDone} className="text-[#6b7a99] text-sm hover:text-[#1a2744] transition-colors">← Back</button>
       </div>
 
       {/* Existing markets */}
       {markets.length > 0 && (
         <div className="space-y-2">
           {markets.map((m) => (
-            <div key={m.id} className="bg-white/5 rounded-xl px-4 py-3 border border-white/10">
+            <div key={m.id} className="bg-white rounded-xl px-4 py-3 border border-[#e0dbd3]">
               <div className="flex justify-between items-center">
-                <p className="text-white text-sm font-semibold">{m.description}</p>
-                <span className={`text-xs font-bold ${m.status === 'open' ? 'text-green-400' : m.status === 'resolved' ? 'text-gray-400' : 'text-red-400'}`}>
+                <p className="text-[#1a2744] text-sm font-semibold">{m.description}</p>
+                <span className={`text-xs font-bold ${m.status === 'open' ? 'text-green-500' : m.status === 'resolved' ? 'text-[#8a9ab0]' : 'text-red-500'}`}>
                   {m.status}
                 </span>
               </div>
-              <p className="text-gray-400 text-xs mt-0.5">{m.market_type}</p>
+              <p className="text-[#6b7a99] text-xs mt-0.5">{m.market_type}</p>
             </div>
           ))}
         </div>
       )}
 
       {/* Create form */}
-      <form onSubmit={handleCreate} className="bg-white/5 rounded-2xl p-4 space-y-3 border border-white/10">
-        <h4 className="text-white font-bold text-sm">Add Market</h4>
+      <form onSubmit={handleCreate} className="bg-white rounded-2xl p-4 space-y-3 border border-[#e0dbd3]">
+        <h4 className="text-[#1a2744] font-bold text-sm">Add Market</h4>
 
         {/* Quick templates */}
         <div className="flex flex-wrap gap-2">
@@ -130,7 +130,7 @@ export default function MarketManager({ game, onDone }: MarketManagerProps) {
               type="button"
               onClick={() => applyTemplate(t)}
               className={`px-3 py-1 rounded-full text-xs font-semibold transition-colors
-                ${marketType === t ? 'bg-yellow-400 text-black' : 'bg-white/10 text-gray-300 hover:bg-white/20'}`}
+                ${marketType === t ? 'bg-[#1a2744] text-white' : 'bg-[#f5f2ee] text-[#6b7a99] border border-[#e0dbd3] hover:bg-[#ece7e0]'}`}
             >
               {t.replace(/_/g, ' ')}
             </button>
@@ -138,12 +138,12 @@ export default function MarketManager({ game, onDone }: MarketManagerProps) {
         </div>
 
         <div>
-          <label className="text-xs text-gray-400 mb-1 block">Description</label>
+          <label className="text-xs text-[#6b7a99] mb-1 block">Description</label>
           <input className={inputCls} value={description} onChange={(e) => setDescription(e.target.value)} required />
         </div>
 
         <div>
-          <label className="text-xs text-gray-400 mb-1 block">Options JSON</label>
+          <label className="text-xs text-[#6b7a99] mb-1 block">Options JSON</label>
           <textarea
             className={`${inputCls} font-mono text-xs`}
             rows={8}
@@ -153,13 +153,13 @@ export default function MarketManager({ game, onDone }: MarketManagerProps) {
         </div>
 
         <div>
-          <label className="text-xs text-gray-400 mb-1 block">Locks at (game start)</label>
+          <label className="text-xs text-[#6b7a99] mb-1 block">Locks at (game start)</label>
           <input type="datetime-local" className={inputCls} value={locksAt} onChange={(e) => setLocksAt(e.target.value)} required />
         </div>
 
-        {msg && <p className={`text-sm ${msg.startsWith('Error') || msg.startsWith('Invalid') ? 'text-red-400' : 'text-green-400'}`}>{msg}</p>}
+        {msg && <p className={`text-sm ${msg.startsWith('Error') || msg.startsWith('Invalid') ? 'text-red-500' : 'text-green-600'}`}>{msg}</p>}
 
-        <button type="submit" disabled={busy} className="w-full py-2 rounded-xl bg-yellow-400 text-black font-bold text-sm disabled:opacity-50">
+        <button type="submit" disabled={busy} className="w-full py-2 rounded-xl bg-[#1a2744] text-white font-bold text-sm disabled:opacity-50 hover:bg-[#243060] transition-colors">
           {busy ? 'Creating…' : '+ Add Market'}
         </button>
       </form>

@@ -19,10 +19,10 @@ function Modal({ title, onClose, children }: ModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4"
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}>
-      <div className="w-full max-w-md bg-[#0d0d12] rounded-2xl border border-white/10 p-6 space-y-5">
+      <div className="w-full max-w-md bg-white rounded-2xl border border-[#e0dbd3] p-6 space-y-5">
         <div className="flex items-center justify-between">
-          <h3 className="text-white font-black text-lg">{title}</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-white text-2xl leading-none">×</button>
+          <h3 className="text-[#1a2744] font-black text-lg">{title}</h3>
+          <button onClick={onClose} className="text-[#6b7a99] hover:text-[#1a2744] text-2xl leading-none">×</button>
         </div>
         {children}
       </div>
@@ -38,13 +38,13 @@ interface FieldProps {
 function Field({ label, children }: FieldProps) {
   return (
     <div className="space-y-1.5">
-      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">{label}</label>
+      <label className="block text-xs font-semibold text-[#6b7a99] uppercase tracking-wider">{label}</label>
       {children}
     </div>
   )
 }
 
-const inputCls = 'w-full px-4 py-3 rounded-xl bg-[#111118] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 transition-all text-sm'
+const inputCls = 'w-full px-4 py-3 rounded-xl bg-white border border-[#e0dbd3] text-[#1a2744] placeholder-[#9aaac0] focus:outline-none focus:border-[#2563eb]/40 transition-all text-sm'
 
 // ─── Create lobby modal ────────────────────────────────────────
 interface CreateModalProps {
@@ -99,7 +99,7 @@ function CreateModal({ onClose, onCreated, userId }: CreateModalProps) {
         <button
           type="submit"
           disabled={busy || !name.trim()}
-          className="w-full py-3 rounded-xl font-bold bg-white hover:bg-gray-100 text-black disabled:opacity-40 transition-all"
+          className="w-full py-3 rounded-xl font-bold bg-[#1a2744] hover:bg-[#243060] text-white disabled:opacity-40 transition-all"
         >
           {busy ? 'Creating...' : 'Create Lobby'}
         </button>
@@ -146,7 +146,7 @@ function JoinModal({ onClose, onJoined, userId }: JoinModalProps) {
         <button
           type="submit"
           disabled={busy || code.length < 4}
-          className="w-full py-3 rounded-xl font-bold bg-white hover:bg-gray-100 text-black disabled:opacity-40 transition-all"
+          className="w-full py-3 rounded-xl font-bold bg-[#1a2744] hover:bg-[#243060] text-white disabled:opacity-40 transition-all"
         >
           {busy ? 'Joining...' : 'Join Lobby'}
         </button>
@@ -198,11 +198,11 @@ function LobbyDetail({ lobby, userId, myId, onBack, onLeft }: LobbyDetailProps) 
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div>
-          <button onClick={onBack} className="text-gray-500 hover:text-white text-sm mb-2 transition-colors">
+          <button onClick={onBack} className="text-[#8a9ab0] hover:text-[#1a2744] text-sm mb-2 transition-colors">
             ← Back to Lobbies
           </button>
-          <h2 className="text-2xl font-black text-white">{lobby.name}</h2>
-          <p className="text-gray-400 text-sm mt-0.5">
+          <h2 className="text-2xl font-black text-[#1a2744]">{lobby.name}</h2>
+          <p className="text-[#6b7a99] text-sm mt-0.5">
             {game
               ? `${game.home_college?.abbreviation} vs ${game.away_college?.abbreviation} -${game.sport}`
               : 'Season-long'}
@@ -211,10 +211,10 @@ function LobbyDetail({ lobby, userId, myId, onBack, onLeft }: LobbyDetailProps) 
         <div className="flex flex-col items-end gap-2 shrink-0">
           <button
             onClick={copyCode}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/8 border border-white/10 hover:bg-white/12 transition-all text-sm font-mono font-bold text-white"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#f0ece6] border border-[#e0dbd3] hover:bg-[#ece7e0] transition-all text-sm font-mono font-bold text-[#1a2744]"
           >
             {lobby.invite_code}
-            <span className="text-gray-500 font-sans font-normal text-xs">
+            <span className="text-[#8a9ab0] font-sans font-normal text-xs">
               {copied ? 'Copied!' : 'Copy'}
             </span>
           </button>
@@ -222,7 +222,7 @@ function LobbyDetail({ lobby, userId, myId, onBack, onLeft }: LobbyDetailProps) 
             <button
               onClick={handleLeave}
               disabled={leaving}
-              className="text-xs text-gray-600 hover:text-red-400 transition-colors"
+              className="text-xs text-[#9aaac0] hover:text-red-400 transition-colors"
             >
               Leave lobby
             </button>
@@ -234,32 +234,32 @@ function LobbyDetail({ lobby, userId, myId, onBack, onLeft }: LobbyDetailProps) 
       <div className="space-y-2">
         {loading ? (
           Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="h-16 rounded-xl bg-white/5 animate-pulse" />
+            <div key={i} className="h-16 rounded-xl bg-[#f5f2ee] animate-pulse" />
           ))
         ) : rows.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">No bets placed yet.</p>
+          <p className="text-[#8a9ab0] text-center py-8">No bets placed yet.</p>
         ) : (
           rows.map((row, i) => {
             const rank = i + 1
             const { icon, class: rankClass } = getRankDisplay(rank)
             const isMe = row.user_id === userId
-            const plColor = row.net_pl > 0 ? 'text-green-400' : row.net_pl < 0 ? 'text-red-400' : 'text-gray-400'
+            const plColor = row.net_pl > 0 ? 'text-green-400' : row.net_pl < 0 ? 'text-red-400' : 'text-[#6b7a99]'
 
             return (
               <div
                 key={row.user_id}
                 className={`flex items-center gap-3 rounded-xl px-4 py-3 border transition-all
-                  ${isMe ? 'bg-yellow-400/10 border-yellow-400/30' : 'bg-white/5 border-white/[0.06]'}`}
+                  ${isMe ? 'bg-yellow-400/10 border-yellow-400/30' : 'bg-white border-[#e0dbd3]'}`}
               >
                 <div className={`w-8 text-center font-black text-lg ${rankClass}`}>{icon}</div>
                 {row.college && (
                   <CollegeLogo college={row.college} size={36} />
                 )}
                 <div className="flex-1 min-w-0">
-                  <p className={`font-bold text-sm truncate ${isMe ? 'text-yellow-300' : 'text-white'}`}>
+                  <p className={`font-bold text-sm truncate ${isMe ? 'text-yellow-300' : 'text-[#1a2744]'}`}>
                     {row.display_name} {isMe && '(you)'}
                   </p>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-[#8a9ab0] text-xs">
                     {row.wins}/{row.settled} bets - {row.win_rate}%
                   </p>
                 </div>
@@ -270,11 +270,11 @@ function LobbyDetail({ lobby, userId, myId, onBack, onLeft }: LobbyDetailProps) 
                       {row.net_pl > 0 ? '+' : ''}{formatCoins(row.net_pl)} coins
                     </p>
                   ) : (
-                    <p className="text-yellow-400 font-black text-sm">
+                    <p className="text-amber-600 font-black text-sm">
                       🪙 {formatCoins(row.coins)}
                     </p>
                   )}
-                  <p className="text-gray-600 text-[10px] mt-0.5">{sortLabel}</p>
+                  <p className="text-[#9aaac0] text-[10px] mt-0.5">{sortLabel}</p>
                 </div>
               </div>
             )
@@ -301,20 +301,20 @@ function LobbyCard({ lobby, onClick }: LobbyCardProps) {
   return (
     <button
       onClick={onClick}
-      className="w-full text-left rounded-2xl border border-white/8 bg-white/[0.04] hover:bg-white/[0.07] hover:border-white/15 transition-all p-4 cursor-pointer"
+      className="w-full text-left rounded-2xl border border-[#e0dbd3] bg-white hover:bg-[#f5f2ee] hover:border-[#d8d2ca] transition-all p-4 cursor-pointer"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-white font-bold truncate">{lobby.name}</p>
-          <p className="text-gray-500 text-sm mt-0.5">
+          <p className="text-[#1a2744] font-bold truncate">{lobby.name}</p>
+          <p className="text-[#8a9ab0] text-sm mt-0.5">
             {game
               ? `${game.home_college?.abbreviation} vs ${game.away_college?.abbreviation} -${game.sport}`
               : 'Season-long'}
           </p>
         </div>
         <div className="shrink-0 text-right">
-          <p className="text-white font-mono font-bold text-sm">{lobby.invite_code}</p>
-          <p className="text-gray-600 text-xs mt-0.5">{memberCount} member{memberCount !== 1 ? 's' : ''}</p>
+          <p className="text-[#1a2744] font-mono font-bold text-sm">{lobby.invite_code}</p>
+          <p className="text-[#9aaac0] text-xs mt-0.5">{memberCount} member{memberCount !== 1 ? 's' : ''}</p>
         </div>
       </div>
     </button>
@@ -373,19 +373,19 @@ export default function LobbiesPage() {
     <div className="max-w-2xl mx-auto">
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-black text-white">Lobbies</h1>
-          <p className="text-gray-400 mt-1">Bet against your friends</p>
+          <h1 className="text-3xl font-black text-[#1a2744]">Lobbies</h1>
+          <p className="text-[#6b7a99] mt-1">Bet against your friends</p>
         </div>
         <div className="flex gap-2">
           <button
             onClick={() => setShowJoin(true)}
-            className="px-4 py-2 rounded-xl text-sm font-bold border border-white/12 text-gray-300 hover:border-white/25 hover:text-white transition-all"
+            className="px-4 py-2 rounded-xl text-sm font-bold border border-[#d8d2ca] text-[#4a5a7a] hover:border-[#ccc4ba] hover:text-[#1a2744] transition-all"
           >
             Join
           </button>
           <button
             onClick={() => setShowCreate(true)}
-            className="px-4 py-2 rounded-xl text-sm font-bold bg-white hover:bg-gray-100 text-black shadow-lg shadow-white/10 transition-all"
+            className="px-4 py-2 rounded-xl text-sm font-bold bg-[#1a2744] hover:bg-[#243060] text-white shadow-lg shadow-[#1a2744]/10 transition-all"
           >
             + Create
           </button>
@@ -394,12 +394,12 @@ export default function LobbiesPage() {
 
       {loading ? (
         Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="h-20 rounded-2xl bg-white/5 animate-pulse mb-3" />
+          <div key={i} className="h-20 rounded-2xl bg-[#f5f2ee] animate-pulse mb-3" />
         ))
       ) : lobbies.length === 0 ? (
-        <div className="text-center py-16 border border-dashed border-white/10 rounded-2xl">
-          <p className="text-gray-500 text-lg mb-1">No lobbies yet</p>
-          <p className="text-gray-600 text-sm">Create one and share the code with friends</p>
+        <div className="text-center py-16 border border-dashed border-[#e0dbd3] rounded-2xl">
+          <p className="text-[#8a9ab0] text-lg mb-1">No lobbies yet</p>
+          <p className="text-[#9aaac0] text-sm">Create one and share the code with friends</p>
         </div>
       ) : (
         <div className="space-y-3">

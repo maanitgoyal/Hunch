@@ -117,7 +117,7 @@ export default function PromoBanner() {
           boxShadow: `0 0 40px 0 ${b.glow}, inset 0 1px 0 rgba(255,255,255,0.07)`,
           borderColor: `${b.accent}30`,
         }}
-        className={`relative overflow-hidden rounded-2xl border cursor-pointer bg-gradient-to-br ${b.bg} p-7 min-h-[200px] flex flex-col justify-between`}
+        className={`relative overflow-hidden rounded-2xl border cursor-pointer bg-gradient-to-br ${b.bg} p-8 min-h-[260px] flex flex-col justify-between`}
       >
         {/* Animated shimmer stripe */}
         <div
@@ -184,7 +184,7 @@ export default function PromoBanner() {
       <div className="flex items-center justify-center gap-3 mt-3">
         <button
           onClick={() => go('left')}
-          className="w-7 h-7 rounded-full bg-white/8 border border-white/10 text-white/60 hover:text-white hover:bg-white/15 flex items-center justify-center text-sm transition-all"
+          className="w-7 h-7 rounded-full bg-[#f0ece6] border border-[#e0dbd3] text-[#1a2744]/60 hover:text-[#1a2744] hover:bg-[#e8e2da] flex items-center justify-center text-sm transition-all"
         >
           ‹
         </button>
@@ -198,7 +198,7 @@ export default function PromoBanner() {
               style={{
                 width:  i === idx ? '18px' : '6px',
                 height: '6px',
-                background: i === idx ? BANNERS[idx].accent : 'rgba(255,255,255,0.2)',
+                background: i === idx ? BANNERS[idx].accent : 'rgba(26,39,68,0.2)',
               }}
             />
           ))}
@@ -206,7 +206,7 @@ export default function PromoBanner() {
 
         <button
           onClick={() => go('right')}
-          className="w-7 h-7 rounded-full bg-white/8 border border-white/10 text-white/60 hover:text-white hover:bg-white/15 flex items-center justify-center text-sm transition-all"
+          className="w-7 h-7 rounded-full bg-[#f0ece6] border border-[#e0dbd3] text-[#1a2744]/60 hover:text-[#1a2744] hover:bg-[#e8e2da] flex items-center justify-center text-sm transition-all"
         >
           ›
         </button>

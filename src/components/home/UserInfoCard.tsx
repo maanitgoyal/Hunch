@@ -40,44 +40,44 @@ export default function UserInfoCard() {
       {/* Info */}
       <div className="flex flex-col gap-1.5 min-w-0">
         <div>
-          <p className="text-white font-black text-xl leading-tight truncate">{profile.display_name}</p>
-          <p className="text-gray-400 text-sm truncate">{profile.colleges?.name ?? 'No college'}</p>
+          <p className="text-[#1a2744] font-black text-xl leading-tight truncate">{profile.display_name}</p>
+          <p className="text-[#6b7a99] text-sm truncate">{profile.colleges?.name ?? 'No college'}</p>
         </div>
 
         <div className="flex items-center gap-3 flex-wrap mt-0.5">
           <span className="flex items-center gap-1 font-bold text-base">
-            <span className="text-yellow-400">🪙</span>
-            <span className="text-yellow-300">{formatCoins(profile.coins)}</span>
+            <span>🪙</span>
+            <span className="text-amber-600">{formatCoins(profile.coins)}</span>
           </span>
 
           {settled > 0 && (
             <span className="flex items-center gap-1.5 text-sm font-semibold">
               <span className="text-green-400">{won}W</span>
-              <span className="text-gray-600">·</span>
+              <span className="text-[#9aaac0]">·</span>
               <span className="text-red-400">{lost}L</span>
               {winRate !== null && (
                 <>
-                  <span className="text-gray-600">·</span>
-                  <span className="text-white">{winRate}%</span>
+                  <span className="text-[#9aaac0]">·</span>
+                  <span className="text-[#1a2744]">{winRate}%</span>
                 </>
               )}
             </span>
           )}
 
           {pending > 0 ? (
-            <span className="text-[11px] text-gray-500">{pending} pending</span>
+            <span className="text-[11px] text-[#8a9ab0]">{pending} pending</span>
           ) : settled === 0 ? (
-            <span className="text-gray-600 text-sm">No bets yet</span>
+            <span className="text-[#9aaac0] text-sm">No bets yet</span>
           ) : null}
         </div>
 
-        {bailoutMsg && <span className="text-yellow-300 text-xs">{bailoutMsg}</span>}
+        {bailoutMsg && <span className="text-amber-600 text-xs">{bailoutMsg}</span>}
 
         {profile.coins < 10 && (
           <button
             onClick={handleBailout}
             disabled={claiming}
-            className="mt-0.5 self-start px-3 py-1 rounded-lg text-xs font-bold bg-yellow-500/15 text-yellow-400 border border-yellow-400/25 hover:bg-yellow-500/25 transition-all disabled:opacity-50"
+            className="mt-0.5 self-start px-3 py-1 rounded-lg text-xs font-bold bg-amber-500/15 text-amber-600 border border-amber-500/25 hover:bg-amber-500/25 transition-all disabled:opacity-50"
           >
             {claiming ? 'Claiming...' : 'Claim Bailout (100 coins)'}
           </button>

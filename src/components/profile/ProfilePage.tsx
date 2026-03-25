@@ -42,8 +42,8 @@ interface SectionProps {
 
 function Section({ title, children }: SectionProps) {
   return (
-    <div className="rounded-2xl border border-white/8 bg-white/[0.04] backdrop-blur-xl p-6 space-y-4">
-      <h2 className="text-lg font-bold text-white">{title}</h2>
+    <div className="rounded-2xl border border-[#e0dbd3] bg-white backdrop-blur-xl p-6 space-y-4">
+      <h2 className="text-lg font-bold text-[#1a2744]">{title}</h2>
       {children}
     </div>
   )
@@ -57,13 +57,13 @@ interface FieldProps {
 function Field({ label, children }: FieldProps) {
   return (
     <div className="space-y-1.5">
-      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">{label}</label>
+      <label className="block text-xs font-semibold text-[#6b7a99] uppercase tracking-wider">{label}</label>
       {children}
     </div>
   )
 }
 
-const inputCls = 'w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all text-sm'
+const inputCls = 'w-full px-4 py-3 rounded-xl bg-[#f0ece6] border border-[#e0dbd3] text-[#1a2744] placeholder-[#9aaac0] focus:outline-none focus:border-[#2563eb]/40 focus:bg-[#ece7e0] transition-all text-sm'
 
 export default function ProfilePage() {
   const { profile, refreshProfile } = useAuth()
@@ -142,35 +142,35 @@ export default function ProfilePage() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       <div>
-        <h1 className="text-3xl font-black text-white">Profile</h1>
-        <p className="text-gray-400 mt-1">Manage your account</p>
+        <h1 className="text-3xl font-black text-[#1a2744]">Profile</h1>
+        <p className="text-[#6b7a99] mt-1">Manage your account</p>
       </div>
 
       {/* Identity card */}
-      <div className="rounded-2xl border border-white/8 bg-white/[0.04] backdrop-blur-xl p-6">
+      <div className="rounded-2xl border border-[#e0dbd3] bg-white backdrop-blur-xl p-6">
         <div className="flex items-center gap-5">
           <Avatar profile={profile} size={80} />
           <div className="flex-1 min-w-0">
-            <p className="text-white font-bold text-2xl truncate">{profile.display_name}</p>
+            <p className="text-[#1a2744] font-bold text-2xl truncate">{profile.display_name}</p>
             <div className="flex items-center gap-2 mt-1">
               <CollegeLogo college={profile.colleges} size={20} />
-              <p className="text-gray-400 text-sm">{profile.colleges?.name ?? 'No college'}</p>
+              <p className="text-[#6b7a99] text-sm">{profile.colleges?.name ?? 'No college'}</p>
             </div>
-            <p className="text-yellow-400 font-bold mt-2">🪙 {formatCoins(profile.coins)}</p>
+            <p className="text-amber-600 font-bold mt-2">🪙 {formatCoins(profile.coins)}</p>
           </div>
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-4 gap-3 mt-5 pt-5 border-t border-white/8">
+        <div className="grid grid-cols-4 gap-3 mt-5 pt-5 border-t border-[#e0dbd3]">
           {[
             { label: 'Total Bets', value: total },
             { label: 'Won', value: won, color: 'text-green-400' },
             { label: 'Lost', value: lost, color: 'text-red-400' },
-            { label: 'Win Rate', value: `${winRate}%`, color: 'text-white' },
+            { label: 'Win Rate', value: `${winRate}%`, color: 'text-[#1a2744]' },
           ].map(({ label, value, color }) => (
             <div key={label} className="text-center">
-              <p className={`text-xl font-black ${color ?? 'text-white'}`}>{value}</p>
-              <p className="text-gray-500 text-xs mt-0.5">{label}</p>
+              <p className={`text-xl font-black ${color ?? 'text-[#1a2744]'}`}>{value}</p>
+              <p className="text-[#8a9ab0] text-xs mt-0.5">{label}</p>
             </div>
           ))}
         </div>
@@ -178,20 +178,20 @@ export default function ProfilePage() {
 
       {/* Season stats */}
       {total > 0 && (
-        <div className="rounded-2xl border border-white/8 bg-white/[0.04] backdrop-blur-xl p-6">
-          <h2 className="text-lg font-bold text-white mb-4">Your Stats</h2>
+        <div className="rounded-2xl border border-[#e0dbd3] bg-white backdrop-blur-xl p-6">
+          <h2 className="text-lg font-bold text-[#1a2744] mb-4">Your Stats</h2>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { label: 'Total wagered',   value: `🪙 ${formatCoins(totalWagered)}`,                    color: 'text-white'      },
+              { label: 'Total wagered',   value: `🪙 ${formatCoins(totalWagered)}`,                    color: 'text-[#1a2744]'      },
               { label: 'Net P&L',         value: `${netPL >= 0 ? '+' : ''}${formatCoins(netPL)}`,       color: netPL >= 0 ? 'text-green-400' : 'text-red-400' },
-              { label: 'Best single win', value: bestWin > 0 ? `+${formatCoins(bestWin)}` : '-',        color: 'text-yellow-400' },
-              { label: 'Worst loss',      value: worstLoss > 0 ? `-${formatCoins(worstLoss)}` : '-',    color: worstLoss > 0 ? 'text-red-400' : 'text-gray-500' },
-              { label: 'Pending bets',    value: pending,                                                color: 'text-gray-300'   },
-              { label: 'Win streak',      value: streak >= 1 ? `🔥 ${streak}` : streak === 0 && won === 0 ? '-' : '0', color: streak >= 3 ? 'text-orange-400' : 'text-white' },
+              { label: 'Best single win', value: bestWin > 0 ? `+${formatCoins(bestWin)}` : '-',        color: 'text-amber-600' },
+              { label: 'Worst loss',      value: worstLoss > 0 ? `-${formatCoins(worstLoss)}` : '-',    color: worstLoss > 0 ? 'text-red-400' : 'text-[#8a9ab0]' },
+              { label: 'Pending bets',    value: pending,                                                color: 'text-[#4a5a7a]'   },
+              { label: 'Win streak',      value: streak >= 1 ? `🔥 ${streak}` : streak === 0 && won === 0 ? '-' : '0', color: streak >= 3 ? 'text-orange-400' : 'text-[#1a2744]' },
             ].map(({ label, value, color }) => (
-              <div key={label} className="bg-white/5 border border-white/8 rounded-xl px-4 py-3">
+              <div key={label} className="bg-[#f5f2ee] border border-[#e0dbd3] rounded-xl px-4 py-3">
                 <p className={`font-black text-base ${color}`}>{value}</p>
-                <p className="text-gray-500 text-xs mt-0.5">{label}</p>
+                <p className="text-[#8a9ab0] text-xs mt-0.5">{label}</p>
               </div>
             ))}
           </div>
@@ -199,20 +199,20 @@ export default function ProfilePage() {
       )}
 
       {/* Avatar picker */}
-      <div className="rounded-2xl border border-white/8 bg-white/[0.04] backdrop-blur-xl p-6 space-y-4">
+      <div className="rounded-2xl border border-[#e0dbd3] bg-white backdrop-blur-xl p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-white">Avatar</h2>
+          <h2 className="text-lg font-bold text-[#1a2744]">Avatar</h2>
           {profile.avatar_emoji && (
             <button
               onClick={() => pickEmoji(profile.avatar_emoji!)}
               disabled={emojiSaving}
-              className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+              className="text-xs text-[#8a9ab0] hover:text-[#4a5a7a] transition-colors"
             >
               Remove
             </button>
           )}
         </div>
-        <p className="text-gray-500 text-xs -mt-2">Tap to select. Tap again to remove.</p>
+        <p className="text-[#8a9ab0] text-xs -mt-2">Tap to select. Tap again to remove.</p>
         <div className="grid grid-cols-8 gap-2">
           {EMOJI_OPTIONS.map(({ emoji, label }) => (
             <button
@@ -222,8 +222,8 @@ export default function ProfilePage() {
               title={label}
               className={`aspect-square rounded-xl text-2xl flex items-center justify-center transition-all cursor-pointer hover:scale-110 active:scale-95
                 ${profile.avatar_emoji === emoji
-                  ? 'bg-white/15 border border-white/40 shadow-lg shadow-white/10 scale-110'
-                  : 'bg-white/5 border border-white/8 hover:bg-white/10'}`}
+                  ? 'bg-[#e8e2da] border border-[#d8d2ca] shadow-lg shadow-[#1a2744]/10 scale-110'
+                  : 'bg-[#f5f2ee] border border-[#e0dbd3] hover:bg-[#ece7e0]'}`}
             >
               {emoji}
             </button>
@@ -251,7 +251,7 @@ export default function ProfilePage() {
           <button
             type="submit"
             disabled={nameBusy || !name.trim() || name.trim() === profile.display_name}
-            className="px-6 py-2.5 rounded-xl bg-white hover:bg-gray-100 text-black text-sm font-bold transition-all disabled:opacity-40 shadow-lg shadow-white/10"
+            className="px-6 py-2.5 rounded-xl bg-[#1a2744] hover:bg-[#243060] text-white text-sm font-bold transition-all disabled:opacity-40 shadow-lg shadow-[#1a2744]/10"
           >
             {nameBusy ? 'Saving...' : 'Save Name'}
           </button>
@@ -261,16 +261,16 @@ export default function ProfilePage() {
       {/* How to play */}
       <button
         onClick={openTutorial}
-        className="w-full rounded-2xl border border-white/8 bg-white/[0.04] backdrop-blur-xl px-6 py-4 flex items-center justify-between group hover:bg-white/[0.07] transition-all text-left"
+        className="w-full rounded-2xl border border-[#e0dbd3] bg-white backdrop-blur-xl px-6 py-4 flex items-center justify-between group hover:bg-[#f5f2ee] transition-all text-left"
       >
         <div className="flex items-center gap-3">
           <span className="text-2xl">🎓</span>
           <div>
-            <p className="text-white font-bold text-sm">How to play</p>
-            <p className="text-gray-500 text-xs mt-0.5">A quick tour of everything Hunch has to offer</p>
+            <p className="text-[#1a2744] font-bold text-sm">How to play</p>
+            <p className="text-[#8a9ab0] text-xs mt-0.5">A quick tour of everything Hunch has to offer</p>
           </div>
         </div>
-        <span className="text-gray-600 group-hover:text-gray-400 transition-colors text-lg">›</span>
+        <span className="text-[#9aaac0] group-hover:text-[#6b7a99] transition-colors text-lg">›</span>
       </button>
 
       {/* Change password */}
@@ -286,7 +286,7 @@ export default function ProfilePage() {
                 className={`${inputCls} pr-14`}
               />
               <button type="button" onClick={() => setShowPw((s) => !s)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 text-xs font-semibold">
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8a9ab0] hover:text-[#4a5a7a] text-xs font-semibold">
                 {showPw ? 'HIDE' : 'SHOW'}
               </button>
             </div>
@@ -311,7 +311,7 @@ export default function ProfilePage() {
           <button
             type="submit"
             disabled={pwBusy || !newPw || !confirmPw}
-            className="px-6 py-2.5 rounded-xl bg-white hover:bg-gray-100 text-black text-sm font-bold transition-all disabled:opacity-40 shadow-lg shadow-white/10"
+            className="px-6 py-2.5 rounded-xl bg-[#1a2744] hover:bg-[#243060] text-white text-sm font-bold transition-all disabled:opacity-40 shadow-lg shadow-[#1a2744]/10"
           >
             {pwBusy ? 'Updating...' : 'Update Password'}
           </button>

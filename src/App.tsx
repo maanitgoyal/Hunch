@@ -114,7 +114,7 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <TutorialProvider>
-          <AnimatedBackground />
+          {/* <AnimatedBackground /> */}
           <AppRoutes />
         </TutorialProvider>
       </BrowserRouter>

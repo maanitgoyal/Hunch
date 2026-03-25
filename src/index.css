@@ -11,9 +11,9 @@
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: #e8e8f0;
+    color: #1a2744;
     -webkit-font-smoothing: antialiased;
-    background: #000000;
+    background: #ede8e1;
   }
 }
 
@@ -28,32 +28,28 @@
 }
 .card-shake { animation: card-shake 0.55s ease-in-out; }
 
-/* Slow-spinning white mesh */
-@keyframes mesh-spin {
+/* Commented out — dark gradient mesh */
+/* @keyframes mesh-spin {
   from { transform: rotate(0deg)   scale(1.6); }
   to   { transform: rotate(360deg) scale(1.6); }
 }
-
 .gradient-mesh {
   position: fixed;
   inset: -50%;
-  background:
-    radial-gradient(ellipse 55% 40% at 15% 25%, rgba(255,255,255,0.055) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 38% at 85% 75%, rgba(220,220,220,0.04)  0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 55% 5%,  rgba(255,255,255,0.035) 0%, transparent 60%),
-    radial-gradient(ellipse 35% 28% at 30% 85%, rgba(200,200,200,0.025) 0%, transparent 55%);
+  background: ...;
   animation: mesh-spin 55s linear infinite;
   pointer-events: none;
   z-index: -1;
-}
+} */
+.gradient-mesh { display: none; }
 
-/* Animated white shimmer for hero text */
+/* Animated shimmer for hero text */
 @keyframes text-shimmer {
   0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
 .text-shimmer {
-  background: linear-gradient(90deg, #ffffff 0%, #888888 40%, #ffffff 60%, #888888 100%);
+  background: linear-gradient(90deg, #1a2744 0%, #4a6a99 40%, #1a2744 60%, #4a6a99 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -61,15 +57,12 @@
   animation: text-shimmer 4s linear infinite;
 }
 
-/* Grain texture — the difference between "good dark UI" and "premium dark UI" */
-.grain {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* Grain — commented out for light theme */
+/* .grain {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0; opacity: 0.035;
+} */
+.grain { display: none; }
 
 /* Card shimmer */
 @keyframes card-shimmer {
@@ -80,29 +73,9 @@
   animation: card-shimmer 5s ease-in-out infinite;
 }
 
-/* Banner sweep */
-@keyframes banner-shimmer {
-  0%   { transform: translateX(-120%); }
-  60%  { transform: translateX(220%); }
-  100% { transform: translateX(220%); }
-}
-
-/* Page-level sweep */
-@keyframes page-sweep {
-  0%   { transform: translateX(-100%) skewX(-12deg); opacity: 0; }
-  15%  { opacity: 1; }
-  85%  { opacity: 1; }
-  100% { transform: translateX(120vw)  skewX(-12deg); opacity: 0; }
-}
-.page-sweep {
-  position: fixed;
-  inset: 0;
-  width: 40vw;
-  pointer-events: none;
-  z-index: 0;
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent);
-  animation: page-sweep 14s ease-in-out infinite;
-}
+/* Page-level sweep — commented out for light theme */
+/* .page-sweep { ... } */
+.page-sweep { display: none; }
 
 @layer utilities {
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
@@ -112,9 +85,9 @@
   }
 
   .glass {
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.75);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(26,39,68,0.1);
   }
 
   .scrollbar-hide::-webkit-scrollbar { display: none; }

@@ -19,7 +19,7 @@ export default function GameCard({ game, userBetGameIds = [] }: GameCardProps) {
   const homeRgb = hexToRgb(home_college?.primary_color ?? '#1a1a2e')
   const awayRgb = hexToRgb(away_college?.primary_color ?? '#16213e')
 
-  const statusColor = GAME_STATUS_COLORS[game.status] ?? 'text-gray-400'
+  const statusColor = GAME_STATUS_COLORS[game.status] ?? 'text-[#6b7a99]'
 
   const gradientStyle = {
     background: `linear-gradient(145deg, rgba(${homeRgb},0.9) 0%, rgba(${homeRgb},0.4) 45%, rgba(${awayRgb},0.4) 55%, rgba(${awayRgb},0.9) 100%)`,
@@ -53,7 +53,7 @@ export default function GameCard({ game, userBetGameIds = [] }: GameCardProps) {
           </div>
           <div className="flex items-center gap-1.5">
             {game.game_type && game.game_type !== 'regular_season' && (
-              <span className="text-[10px] font-bold bg-white/15 text-white rounded-full px-2 py-0.5 border border-white/20 uppercase tracking-wide">
+              <span className="text-[10px] font-bold bg-[#e8e2da] text-white rounded-full px-2 py-0.5 border border-[#d8d2ca] uppercase tracking-wide">
                 {game.game_type === 'playoff_semi' ? 'Semi Final' : 'Grand Final'}
               </span>
             )}
@@ -105,7 +105,7 @@ export default function GameCard({ game, userBetGameIds = [] }: GameCardProps) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-4 py-3 bg-black/20 backdrop-blur-sm border-t border-white/10">
+        <div className="flex items-center justify-between px-4 py-3 bg-black/20 backdrop-blur-sm border-t border-[#e0dbd3]">
           <div className="flex items-center gap-2">
             <span className="text-white/50 text-xs">{formatGameTime(game.scheduled_at)}</span>
             {countdown && (

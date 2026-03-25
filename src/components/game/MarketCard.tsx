@@ -30,7 +30,7 @@ function PoolBar({ options, optionStakes }: PoolBarProps) {
       {options.map((o: any, i: number) => {
         const stake = optionStakes[o.key] ?? 0
         const pct = total > 0 ? (stake / total) * 100 : 0
-        const colors = ['bg-white/70', 'bg-white/40', 'bg-amber-500']
+        const colors = ['bg-[#1a2744]/70', 'bg-[#1a2744]/40', 'bg-amber-500']
         return (
           <div
             key={o.key}
@@ -77,17 +77,17 @@ export default function MarketCard({ market, existingBets = [], userCoins, onBet
 
   return (
     <>
-      <div className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden">
+      <div className="bg-[#f5f2ee] rounded-2xl border border-[#e0dbd3] overflow-hidden">
         {/* Header */}
-        <div className="px-4 py-3 border-b border-white/10 flex items-center justify-between">
+        <div className="px-4 py-3 border-b border-[#e0dbd3] flex items-center justify-between">
           <div>
-            <p className="text-xs text-gray-400 font-medium">{MARKET_TYPE_LABELS[market.market_type]}</p>
-            <p className="text-white font-semibold text-sm mt-0.5">{market.description}</p>
+            <p className="text-xs text-[#6b7a99] font-medium">{MARKET_TYPE_LABELS[market.market_type]}</p>
+            <p className="text-[#1a2744] font-semibold text-sm mt-0.5">{market.description}</p>
           </div>
           <div className="flex items-center gap-2">
             {totalPool > 0 && (
-              <span className="text-xs text-gray-400">
-                Pool: <span className="text-yellow-400 font-bold">🪙 {formatCoins(totalPool)}</span>
+              <span className="text-xs text-[#6b7a99]">
+                Pool: <span className="text-amber-600 font-bold">🪙 {formatCoins(totalPool)}</span>
               </span>
             )}
             <span className={`
@@ -113,14 +113,14 @@ export default function MarketCard({ market, existingBets = [], userCoins, onBet
             const stake        = optionStakes[opt.key] ?? 0
             const multiplier   = liveOdds(opt)
 
-            let borderClass = 'border-white/10'
-            let bgClass     = 'bg-white/5'
-            let textClass   = 'text-gray-200'
+            let borderClass = 'border-[#e0dbd3]'
+            let bgClass     = 'bg-[#f5f2ee]'
+            let textClass   = 'text-[#2a3a5a]'
 
             if (isCorrect)       { borderClass = 'border-green-400'; bgClass = 'bg-green-500/15'; textClass = 'text-green-300' }
             else if (isWrong)    { borderClass = 'border-red-400';   bgClass = 'bg-red-500/15';   textClass = 'text-red-300'   }
-            else if (isSelectedUI) { borderClass = 'border-white/60'; bgClass = 'bg-white/10' }
-            else if (isUserPick) { borderClass = 'border-yellow-400/60'; bgClass = 'bg-yellow-500/10' }
+            else if (isSelectedUI) { borderClass = 'border-[#2563eb]/40'; bgClass = 'bg-[#ece7e0]' }
+            else if (isUserPick) { borderClass = 'border-amber-500/60'; bgClass = 'bg-amber-500/10' }
 
             return (
               <button
@@ -131,11 +131,11 @@ export default function MarketCard({ market, existingBets = [], userCoins, onBet
                   w-full flex items-center justify-between rounded-xl border px-4 py-3
                   ${bgClass} ${borderClass} ${textClass}
                   transition-all duration-150
-                  ${!isLocked ? 'hover:bg-white/10 active:scale-[0.98] cursor-pointer' : 'cursor-default'}
+                  ${!isLocked ? 'hover:bg-[#ece7e0] active:scale-[0.98] cursor-pointer' : 'cursor-default'}
                 `}
               >
                 <div className="flex items-center gap-2">
-                  {isUserPick && !isCorrect && !isWrong && <span className="text-yellow-400 text-xs">●</span>}
+                  {isUserPick && !isCorrect && !isWrong && <span className="text-amber-600 text-xs">●</span>}
                   {isCorrect  && <span>✅</span>}
                   {isWrong    && <span>❌</span>}
                   <span className="font-medium text-sm">{opt.label}</span>
@@ -143,12 +143,12 @@ export default function MarketCard({ market, existingBets = [], userCoins, onBet
 
                 <div className="flex flex-col items-end gap-0.5">
                   {multiplier ? (
-                    <span className="text-yellow-400 font-bold text-sm">{Number(multiplier).toFixed(2)}x</span>
+                    <span className="text-amber-600 font-bold text-sm">{Number(multiplier).toFixed(2)}x</span>
                   ) : (
-                    <span className="text-gray-600 text-xs">-</span>
+                    <span className="text-[#9aaac0] text-xs">-</span>
                   )}
                   {stake > 0 && (
-                    <span className="text-gray-500 text-[10px]">🪙 {formatCoins(stake)} staked</span>
+                    <span className="text-[#8a9ab0] text-[10px]">🪙 {formatCoins(stake)} staked</span>
                   )}
                 </div>
               </button>

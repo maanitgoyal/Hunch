@@ -13,7 +13,7 @@ export default function CollegeLogo({ college, size = 40, className = '' }: Coll
   if (!college) {
     return (
       <div
-        className={`rounded-full bg-white/10 flex items-center justify-center text-white font-bold ${className}`}
+        className={`rounded-full bg-[#ece7e0] flex items-center justify-center text-[#6b7a99] font-bold ${className}`}
         style={{ width: size, height: size, fontSize: size * 0.35 }}
       >
         ?
@@ -39,7 +39,7 @@ export default function CollegeLogo({ college, size = 40, className = '' }: Coll
       style={{
         width: size,
         height: size,
-        backgroundColor: college.primary_color ?? '#1a1a2e',
+        backgroundColor: college.primary_color ?? '#1a2744',
         fontSize: size * 0.3,
       }}
     >

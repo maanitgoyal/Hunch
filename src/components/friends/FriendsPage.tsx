@@ -35,11 +35,11 @@ interface UserRowProps {
 
 function UserRow({ user, action }: UserRowProps) {
   return (
-    <div className="flex items-center gap-3 rounded-xl px-4 py-3 bg-white/[0.04] border border-white/[0.06]">
+    <div className="flex items-center gap-3 rounded-xl px-4 py-3 bg-white border border-[#e0dbd3]">
       <Avatar user={user} size={42} />
       <div className="flex-1 min-w-0">
-        <p className="text-white font-bold text-sm truncate">{user.display_name}</p>
-        <p className="text-gray-500 text-xs truncate">{user.colleges?.name ?? 'No college'}</p>
+        <p className="text-[#1a2744] font-bold text-sm truncate">{user.display_name}</p>
+        <p className="text-[#8a9ab0] text-xs truncate">{user.colleges?.name ?? 'No college'}</p>
       </div>
       {action}
     </div>
@@ -82,11 +82,11 @@ export function AddFriendButton({ targetId, myId, size = 'sm' }: AddFriendButton
     : 'px-4 py-2 rounded-xl text-sm font-bold transition-all'
 
   if (status === 'accepted') return <span className={`${cls} text-green-400 bg-green-500/10`}>Friends</span>
-  if (status === 'sent')     return <span className={`${cls} text-gray-500 bg-white/5`}>Requested</span>
-  if (status === 'pending')  return <span className={`${cls} text-white bg-white/10`}>Respond</span>
+  if (status === 'sent')     return <span className={`${cls} text-[#8a9ab0] bg-[#f5f2ee]`}>Requested</span>
+  if (status === 'pending')  return <span className={`${cls} text-[#1a2744] bg-[#ece7e0]`}>Respond</span>
 
   return (
-    <button onClick={handle} disabled={busy} className={`${cls} bg-white/8 text-white hover:bg-white/15 border border-white/15`}>
+    <button onClick={handle} disabled={busy} className={`${cls} bg-[#f0ece6] text-[#1a2744] hover:bg-[#e8e2da] border border-[#d8d2ca]`}>
       {busy ? '...' : '+ Add'}
     </button>
   )
@@ -120,9 +120,9 @@ function SearchSection({ myId }: SearchSectionProps) {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name..."
         autoFocus
-        className="w-full px-4 py-3 rounded-xl bg-[#111118] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 transition-all text-sm"
+        className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0dbd3] text-[#1a2744] placeholder-[#9aaac0] focus:outline-none focus:border-[#2563eb]/40 transition-all text-sm"
       />
-      {loading && <p className="text-gray-500 text-sm text-center">Searching...</p>}
+      {loading && <p className="text-[#8a9ab0] text-sm text-center">Searching...</p>}
       <div className="space-y-2">
         {results.map((u) => (
           <UserRow
@@ -132,7 +132,7 @@ function SearchSection({ myId }: SearchSectionProps) {
           />
         ))}
         {!loading && query.length >= 2 && results.length === 0 && (
-          <p className="text-gray-600 text-sm text-center py-4">No users found</p>
+          <p className="text-[#9aaac0] text-sm text-center py-4">No users found</p>
         )}
       </div>
     </div>
@@ -176,20 +176,20 @@ export default function FriendsPage() {
   return (
     <div className="max-w-2xl mx-auto">
       <div className="mb-6">
-        <h1 className="text-3xl font-black text-white">Friends</h1>
-        <p className="text-gray-400 mt-1">Connect with other players</p>
+        <h1 className="text-3xl font-black text-[#1a2744]">Friends</h1>
+        <p className="text-[#6b7a99] mt-1">Connect with other players</p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1.5 mb-5 bg-white/5 p-1 rounded-xl">
+      <div className="flex gap-1.5 mb-5 bg-[#f5f2ee] p-1 rounded-xl">
         {TABS.map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
             className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all relative
               ${tab === t
-                ? 'bg-white text-black shadow-lg shadow-white/10'
-                : 'text-gray-400 hover:text-white'}`}
+                ? 'bg-[#1a2744] text-white shadow-lg shadow-[#1a2744]/10'
+                : 'text-[#6b7a99] hover:text-[#1a2744]'}`}
           >
             {t}
             {t === 'Requests' && requests.length > 0 && (
@@ -205,10 +205,10 @@ export default function FriendsPage() {
         <SearchSection myId={profile?.id} />
       ) : tab === 'Requests' ? (
         loading ? (
-          <div className="space-y-2">{Array.from({ length: 3 }).map((_, i) => <div key={i} className="h-16 rounded-xl bg-white/5 animate-pulse" />)}</div>
+          <div className="space-y-2">{Array.from({ length: 3 }).map((_, i) => <div key={i} className="h-16 rounded-xl bg-[#f5f2ee] animate-pulse" />)}</div>
         ) : requests.length === 0 ? (
-          <div className="text-center py-16 border border-dashed border-white/10 rounded-2xl">
-            <p className="text-gray-500">No pending requests</p>
+          <div className="text-center py-16 border border-dashed border-[#e0dbd3] rounded-2xl">
+            <p className="text-[#8a9ab0]">No pending requests</p>
           </div>
         ) : (
           <div className="space-y-2">
@@ -226,7 +226,7 @@ export default function FriendsPage() {
                     </button>
                     <button
                       onClick={() => handleRespond(r.id, 'declined')}
-                      className="px-3 py-1 rounded-lg text-xs font-bold bg-white/8 text-gray-400 hover:bg-white/15 transition-all"
+                      className="px-3 py-1 rounded-lg text-xs font-bold bg-[#f0ece6] text-[#6b7a99] hover:bg-[#e8e2da] transition-all"
                     >
                       Decline
                     </button>
@@ -238,11 +238,11 @@ export default function FriendsPage() {
         )
       ) : (
         loading ? (
-          <div className="space-y-2">{Array.from({ length: 3 }).map((_, i) => <div key={i} className="h-16 rounded-xl bg-white/5 animate-pulse" />)}</div>
+          <div className="space-y-2">{Array.from({ length: 3 }).map((_, i) => <div key={i} className="h-16 rounded-xl bg-[#f5f2ee] animate-pulse" />)}</div>
         ) : friends.length === 0 ? (
-          <div className="text-center py-16 border border-dashed border-white/10 rounded-2xl">
-            <p className="text-gray-500 text-lg mb-1">No friends yet</p>
-            <p className="text-gray-600 text-sm">Go to Find to search for people</p>
+          <div className="text-center py-16 border border-dashed border-[#e0dbd3] rounded-2xl">
+            <p className="text-[#8a9ab0] text-lg mb-1">No friends yet</p>
+            <p className="text-[#9aaac0] text-sm">Go to Find to search for people</p>
           </div>
         ) : (
           <div className="space-y-2">
@@ -253,7 +253,7 @@ export default function FriendsPage() {
                 action={
                   <button
                     onClick={() => handleRemove(f.friendshipId)}
-                    className="px-3 py-1 rounded-lg text-xs text-gray-600 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                    className="px-3 py-1 rounded-lg text-xs text-[#9aaac0] hover:text-red-400 hover:bg-red-500/10 transition-all"
                   >
                     Remove
                   </button>
