@@ -58,7 +58,7 @@ export default function UserInfoCard() {
               {winRate !== null && (
                 <>
                   <span className="text-gray-600">·</span>
-                  <span className="text-violet-400">{winRate}%</span>
+                  <span className="text-white">{winRate}%</span>
                 </>
               )}
             </span>

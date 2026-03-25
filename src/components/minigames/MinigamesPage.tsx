@@ -249,13 +249,6 @@ function CoinFlip({ userId, coins, onCoinsChanged, onWin, onLose }: CoinFlipProp
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 space-y-5">
-      <div className="flex items-center gap-3">
-        <span className="text-3xl">🪙</span>
-        <div>
-          <h2 className="text-white font-black text-xl">Coin Flip</h2>
-          <p className="text-gray-400 text-sm">50/50 - win 1.9x your stake</p>
-        </div>
-      </div>
 
       <div className="flex justify-center">
         <div
@@ -417,13 +410,6 @@ function NumberGuess({ userId, coins, onCoinsChanged, onWin, onLose }: NumberGue
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 space-y-5">
-      <div className="flex items-center gap-3">
-        <span className="text-3xl">🎴</span>
-        <div>
-          <h2 className="text-white font-black text-xl">Number Guess</h2>
-          <p className="text-gray-400 text-sm">Guess within 2 of a 2-digit number - win 15x</p>
-        </div>
-      </div>
 
       <PlayingCard revealed={revealed} value={result?.secret} won={result ? result.won : null} shaking={shaking} />
 
@@ -440,12 +426,12 @@ function NumberGuess({ userId, coins, onCoinsChanged, onWin, onLose }: NumberGue
         <div className="flex items-center justify-between">
           <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Guess</label>
           <span className="text-white font-bold text-sm">
-            Range: <span className="text-violet-400">{rangeStart} - {rangeEnd}</span>
+            Range: <span className="text-white/70">{rangeStart} - {rangeEnd}</span>
           </span>
         </div>
         <input type="range" min={12} max={97} step={1} value={guess}
           onChange={(e) => setGuess(Number(e.target.value))} disabled={busy}
-          className="w-full accent-violet-400" />
+          className="w-full accent-white" />
         <div className="flex justify-center">
           <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-2 text-center">
             <p className="text-4xl font-black text-white">{guess}</p>
@@ -473,7 +459,7 @@ function NumberGuess({ userId, coins, onCoinsChanged, onWin, onLose }: NumberGue
             </div>
           </div>
           <button onClick={handleGuess} disabled={busy}
-            className="w-full py-3 rounded-xl font-black text-black bg-violet-400 hover:bg-violet-300 disabled:opacity-40 transition-all active:scale-95">
+            className="w-full py-3 rounded-xl font-black text-black bg-white hover:bg-gray-100 disabled:opacity-40 transition-all active:scale-95">
             {busy ? 'Revealing...' : 'Reveal!'}
           </button>
         </>
@@ -528,12 +514,9 @@ function DraftPick({ userId }: DraftPickProps) {
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 space-y-5">
-      <div className="flex items-center gap-3">
-        <span className="text-3xl">🏅</span>
-        <div>
-          <h2 className="text-white font-black text-xl">Season Draft</h2>
-          <p className="text-gray-400 text-sm">Pick 3 colleges - earn coins every time they win</p>
-        </div>
+      <div>
+        <h2 className="text-white font-black text-lg">Season Draft</h2>
+        <p className="text-gray-400 text-sm">Pick 3 colleges. Earn coins every time they win.</p>
       </div>
 
       <div className="flex gap-2 text-xs text-center">
@@ -560,7 +543,7 @@ function DraftPick({ userId }: DraftPickProps) {
               ) : (
                 <>
                   <div className="flex-1 text-gray-600 text-sm italic">Empty slot</div>
-                  <button onClick={() => { setEditing(rank); setSearch('') }} className="text-xs font-bold text-violet-400 hover:text-violet-300 transition-colors">+ Pick</button>
+                  <button onClick={() => { setEditing(rank); setSearch('') }} className="text-xs font-bold text-white/70 hover:text-white transition-colors">+ Pick</button>
                 </>
               )}
             </div>
@@ -572,7 +555,7 @@ function DraftPick({ userId }: DraftPickProps) {
         <div className="space-y-2">
           <input value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder={`Search college for ${RANK_LABELS[editing - 1]}...`} autoFocus
-            className="w-full px-4 py-2.5 rounded-xl bg-[#111118] border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-violet-400/60 transition-all" />
+            className="w-full px-4 py-2.5 rounded-xl bg-[#111118] border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-white/30 transition-all" />
           <div className="space-y-1 max-h-48 overflow-y-auto">
             {filtered.map((c) => (
               <button key={c.id} onClick={() => handlePick(c)} disabled={saving}
@@ -591,9 +574,16 @@ function DraftPick({ userId }: DraftPickProps) {
 }
 
 // ─── Main page ──────────────────────────────────────────────
+const TABS = [
+  { id: 'flip',   label: 'Coin Flip',     sub: '50/50 · 1.9x'  },
+  { id: 'guess',  label: 'Number Guess',  sub: '±2 range · 15x' },
+  { id: 'draft',  label: 'Season Draft',  sub: 'Passive coins'  },
+]
+
 export default function MinigamesPage() {
   const { profile, refreshProfile } = useAuth()
-  const [coins, setCoins] = useState(profile?.coins ?? 0)
+  const [coins, setCoins]   = useState(profile?.coins ?? 0)
+  const [active, setActive] = useState('flip')
   const { winCount, loseCount, fireWin, fireLose } = useWinLose()
 
   useEffect(() => { setCoins(profile?.coins ?? 0) }, [profile?.coins])
@@ -606,18 +596,43 @@ export default function MinigamesPage() {
   if (!profile) return null
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6 pb-8">
+    <div className="max-w-lg mx-auto pb-8 space-y-6">
       <Confetti triggerCount={winCount} />
       <LoseEffect triggerCount={loseCount} />
 
-      <div>
-        <h1 className="text-3xl font-black text-white">Minigames</h1>
-        <p className="text-gray-400 mt-1">Quick games between matches</p>
+      {/* Header */}
+      <div className="flex items-end justify-between">
+        <div>
+          <h1 className="text-3xl font-black text-white">Minigames</h1>
+          <p className="text-gray-400 mt-1">Quick games between matches</p>
+        </div>
+        <div className="text-right">
+          <p className="text-xs text-gray-500 uppercase tracking-wider">Balance</p>
+          <p className="text-yellow-400 font-black text-lg">🪙 {formatCoins(coins)}</p>
+        </div>
       </div>
 
-      <CoinFlip userId={profile.id} coins={coins} onCoinsChanged={handleCoinsChanged} onWin={fireWin} onLose={fireLose} />
-      <NumberGuess userId={profile.id} coins={coins} onCoinsChanged={handleCoinsChanged} onWin={fireWin} onLose={fireLose} />
-      <DraftPick userId={profile.id} />
+      {/* Tab selector */}
+      <div className="grid grid-cols-3 gap-2">
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setActive(t.id)}
+            className={`rounded-xl py-3 px-2 text-center transition-all border
+              ${active === t.id
+                ? 'bg-white text-black border-white shadow-lg shadow-white/10'
+                : 'bg-white/[0.04] text-gray-400 border-white/8 hover:border-white/20 hover:text-white'}`}
+          >
+            <p className={`text-xs font-black leading-tight ${active === t.id ? 'text-black' : 'text-white'}`}>{t.label}</p>
+            <p className={`text-[10px] mt-0.5 ${active === t.id ? 'text-black/50' : 'text-gray-600'}`}>{t.sub}</p>
+          </button>
+        ))}
+      </div>
+
+      {/* Active game */}
+      {active === 'flip'  && <CoinFlip   userId={profile.id} coins={coins} onCoinsChanged={handleCoinsChanged} onWin={fireWin} onLose={fireLose} />}
+      {active === 'guess' && <NumberGuess userId={profile.id} coins={coins} onCoinsChanged={handleCoinsChanged} onWin={fireWin} onLose={fireLose} />}
+      {active === 'draft' && <DraftPick   userId={profile.id} />}
     </div>
   )
 }

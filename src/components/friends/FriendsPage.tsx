@@ -83,10 +83,10 @@ export function AddFriendButton({ targetId, myId, size = 'sm' }: AddFriendButton
 
   if (status === 'accepted') return <span className={`${cls} text-green-400 bg-green-500/10`}>Friends</span>
   if (status === 'sent')     return <span className={`${cls} text-gray-500 bg-white/5`}>Requested</span>
-  if (status === 'pending')  return <span className={`${cls} text-violet-400 bg-violet-500/10`}>Respond</span>
+  if (status === 'pending')  return <span className={`${cls} text-white bg-white/10`}>Respond</span>
 
   return (
-    <button onClick={handle} disabled={busy} className={`${cls} bg-violet-600/20 text-violet-400 hover:bg-violet-600/35 border border-violet-500/25`}>
+    <button onClick={handle} disabled={busy} className={`${cls} bg-white/8 text-white hover:bg-white/15 border border-white/15`}>
       {busy ? '...' : '+ Add'}
     </button>
   )
@@ -120,7 +120,7 @@ function SearchSection({ myId }: SearchSectionProps) {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name..."
         autoFocus
-        className="w-full px-4 py-3 rounded-xl bg-[#111118] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 transition-all text-sm"
+        className="w-full px-4 py-3 rounded-xl bg-[#111118] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 transition-all text-sm"
       />
       {loading && <p className="text-gray-500 text-sm text-center">Searching...</p>}
       <div className="space-y-2">
@@ -188,7 +188,7 @@ export default function FriendsPage() {
             onClick={() => setTab(t)}
             className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all relative
               ${tab === t
-                ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/20'
+                ? 'bg-white text-black shadow-lg shadow-white/10'
                 : 'text-gray-400 hover:text-white'}`}
           >
             {t}

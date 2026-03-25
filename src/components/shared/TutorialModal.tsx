@@ -23,8 +23,8 @@ function BetDemo() {
   if (phase === 1) {
     return (
       <div className="space-y-3">
-        <div className="flex items-center gap-2 bg-violet-500/10 border border-violet-400/25 rounded-xl px-3 py-2">
-          <span className="text-violet-400 text-xs font-bold">✓ Warrane to win · 1.85x</span>
+        <div className="flex items-center gap-2 bg-white/8 border border-white/20 rounded-xl px-3 py-2">
+          <span className="text-white/80 text-xs font-bold">✓ Warrane to win · 1.85x</span>
         </div>
         <div className="space-y-2">
           <div className="flex justify-between text-xs text-gray-400">
@@ -35,7 +35,7 @@ function BetDemo() {
             type="range" min={10} max={200} step={10}
             value={stake}
             onChange={(e) => setStake(Number(e.target.value))}
-            className="w-full accent-violet-400"
+            className="w-full accent-white"
           />
           <div className="flex justify-between text-xs text-gray-500">
             <span>10</span><span>200</span>
@@ -87,15 +87,15 @@ function BetDemo() {
             onClick={() => label === 'Warrane' && setPhase(1)}
             className={`rounded-xl py-2 px-1 border text-center transition-all
               ${label === 'Warrane'
-                ? 'bg-violet-500/15 border-violet-400/40 hover:bg-violet-500/25 cursor-pointer'
+                ? 'bg-white/12 border-white/30 hover:bg-white/18 cursor-pointer'
                 : 'bg-white/5 border-white/8 opacity-60 cursor-default'}`}
           >
             <p className="text-white text-[10px] font-bold leading-tight">{label}</p>
-            <p className="text-violet-400 text-xs font-black mt-0.5">{odds}</p>
+            <p className="text-white/80 text-xs font-black mt-0.5">{odds}</p>
           </button>
         ))}
       </div>
-      <p className="text-gray-600 text-[10px] text-center">Tap <span className="text-violet-400">Warrane</span> to continue</p>
+      <p className="text-gray-600 text-[10px] text-center">Tap <span className="text-white/80">Warrane</span> to continue</p>
     </div>
   )
 }
@@ -192,13 +192,13 @@ function MinigamesDemo() {
         <span className="text-yellow-400 text-xs font-bold">Try it</span>
       </button>
 
-      <div className="flex items-center gap-3 p-3 rounded-xl bg-violet-500/10 border border-violet-400/25">
+      <div className="flex items-center gap-3 p-3 rounded-xl bg-white/8 border border-white/20">
         <span className="text-2xl">🎴</span>
         <div className="flex-1">
           <p className="text-white font-bold text-sm">Number Guess</p>
           <p className="text-gray-500 text-xs">Pick a 2-digit number. Land within +-2 to win 15x.</p>
         </div>
-        <span className="text-violet-400 text-xs font-bold bg-violet-400/10 px-2 py-0.5 rounded-full">High risk</span>
+        <span className="text-white/80 text-xs font-bold bg-white/8 px-2 py-0.5 rounded-full">High risk</span>
       </div>
 
       <div className="flex items-center gap-3 p-3 rounded-xl bg-pink-500/10 border border-pink-400/25">
@@ -239,7 +239,7 @@ function LeaderboardDemo() {
         </div>
       ))}
       <p className="text-gray-500 text-xs text-center pt-1">
-        Switch to <span className="text-violet-400">Colleges</span> tab to see your college rank
+        Switch to <span className="text-white/80">Colleges</span> tab to see your college rank
       </p>
     </div>
   )
@@ -275,7 +275,7 @@ function AvatarDemo() {
             onClick={() => setPicked(e)}
             className={`aspect-square rounded-lg text-xl flex items-center justify-center transition-all hover:scale-110
               ${picked === e
-                ? 'bg-violet-500/20 border border-violet-400/50 scale-110'
+                ? 'bg-white/15 border border-white/40 scale-110'
                 : 'bg-white/5 border-white/8 hover:bg-white/10'}`}
           >
             {e}

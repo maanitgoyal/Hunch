@@ -87,7 +87,7 @@ export default function LobbyChat({ lobbyId, userId, userProfile }: LobbyChatPro
                 <div
                   className={`px-3 py-2 rounded-2xl text-sm leading-relaxed
                     ${isMe
-                      ? 'bg-gradient-to-br from-violet-600 to-purple-600 text-white rounded-tr-sm'
+                      ? 'bg-white text-black rounded-tr-sm'
                       : 'bg-white/8 text-gray-100 rounded-tl-sm'}`}
                 >
                   {msg.content}
@@ -108,12 +108,12 @@ export default function LobbyChat({ lobbyId, userId, userProfile }: LobbyChatPro
           onChange={(e) => setText(e.target.value)}
           placeholder="Type a message..."
           maxLength={500}
-          className="flex-1 px-3 py-2 rounded-xl bg-[#111118] border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-violet-400/50 transition-all"
+          className="flex-1 px-3 py-2 rounded-xl bg-[#111118] border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-white/30 transition-all"
         />
         <button
           type="submit"
           disabled={!text.trim() || sending}
-          className="px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold text-sm disabled:opacity-40 transition-all"
+          className="px-4 py-2 rounded-xl bg-white hover:bg-gray-100 text-black font-bold text-sm disabled:opacity-40 transition-all"
         >
           Send
         </button>

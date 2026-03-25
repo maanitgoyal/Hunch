@@ -83,9 +83,10 @@ export default function SignupScreen() {
       return
     }
 
-    setUserId(data.user?.id ?? null)
-    setStep(STEP.OTP)
-    setCount(RESEND_SECS)
+    // TODO: uncomment when email verification is enabled in Supabase
+    // setUserId(data.user?.id ?? null)
+    // setStep(STEP.OTP)
+    // setCount(RESEND_SECS)
   }
 
   async function handleVerifyOTP(code: string) {
@@ -132,14 +133,14 @@ export default function SignupScreen() {
 
         <div className="rounded-3xl border border-white/8 bg-white/[0.04] backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden">
 
-          {/* ── Step indicator ─────────────────────────── */}
-          <div className="flex border-b border-white/8">
+          {/* TODO: uncomment step indicator when email verification is enabled */}
+          {/* <div className="flex border-b border-white/8">
             {['Your details', 'Verify email'].map((label, i) => (
               <div
                 key={i}
                 className={`flex-1 py-3 text-center text-xs font-semibold tracking-wide transition-colors
                   ${i === (step === STEP.DETAILS ? 0 : 1)
-                    ? 'text-violet-400 border-b-2 border-violet-400'
+                    ? 'text-white border-b-2 border-white'
                     : 'text-gray-600'}`}
               >
                 <span className={`inline-flex items-center justify-center w-4 h-4 rounded-full text-[10px] mr-1.5
@@ -149,7 +150,7 @@ export default function SignupScreen() {
                 {label}
               </div>
             ))}
-          </div>
+          </div> */}
 
           <div className="p-7">
             {/* ── Step 1: Details ──────────────────────── */}
@@ -157,7 +158,7 @@ export default function SignupScreen() {
               <>
                 <h2 className="text-xl font-bold text-white mb-1">Create account</h2>
                 <p className="text-gray-400 text-sm mb-6">
-                  1,000 coins free to start <span className="text-violet-400">🪙</span>
+                  1,000 coins free to start 🪙
                 </p>
 
                 <form onSubmit={handleSignup} className="space-y-4">
@@ -238,14 +239,14 @@ export default function SignupScreen() {
                   <button type="submit" disabled={busy} className={submitCls}>
                     {busy
                       ? <BtnSpinner />
-                      : 'Create Account & Send Code →'}
+                      : 'Create Account →'}
                   </button>
                 </form>
               </>
             )}
 
-            {/* ── Step 2: OTP ──────────────────────────── */}
-            {step === STEP.OTP && (
+            {/* TODO: uncomment OTP step when email verification is enabled in Supabase */}
+            {/* {step === STEP.OTP && (
               <>
                 <button onClick={() => { setStep(STEP.DETAILS); setError('') }}
                   className="flex items-center gap-1 text-gray-400 hover:text-white text-sm mb-5 transition-colors">
@@ -254,7 +255,7 @@ export default function SignupScreen() {
 
                 <h2 className="text-xl font-bold text-white mb-1">Check your email</h2>
                 <p className="text-gray-400 text-sm mb-1">We sent a 6-digit code to</p>
-                <p className="text-violet-400 font-semibold text-sm mb-6 truncate">{email}</p>
+                <p className="text-white font-semibold text-sm mb-6 truncate">{email}</p>
 
                 <OTPInput length={6} onComplete={handleVerifyOTP} disabled={busy} />
 
@@ -269,7 +270,7 @@ export default function SignupScreen() {
                 <div className="mt-5 text-center">
                   {countdown > 0
                     ? <p className="text-gray-500 text-sm">Resend in {countdown}s</p>
-                    : <button onClick={handleResend} className="text-violet-400 text-sm font-semibold hover:text-yellow-300 transition-colors">
+                    : <button onClick={handleResend} className="text-white/70 text-sm font-semibold hover:text-white transition-colors">
                         Resend code
                       </button>
                   }
@@ -279,13 +280,13 @@ export default function SignupScreen() {
                   Check your spam folder if you don't see it.
                 </p>
               </>
-            )}
+            )} */}
           </div>
         </div>
 
         <p className="text-center text-gray-500 text-sm mt-5">
           Already have an account?{' '}
-          <Link to="/login" className="text-violet-400 font-semibold hover:text-violet-300 transition-colors">
+          <Link to="/login" className="text-white/80 font-semibold hover:text-white transition-colors">
             Sign in →
           </Link>
         </p>
@@ -313,7 +314,7 @@ function BtnSpinner() {
   )
 }
 
-const inputCls = 'w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 focus:bg-white/10 transition-all text-sm'
+const inputCls = 'w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all text-sm'
 
 function CollegeSelect({ colleges, value, onChange }: CollegeSelectProps) {
   const [open, setOpen]       = useState(false)
@@ -411,7 +412,7 @@ function CollegeSelect({ colleges, value, onChange }: CollegeSelectProps) {
                 onMouseDown={() => select(c)}
                 onMouseEnter={() => setCursor(i)}
                 className={`px-4 py-3 text-sm cursor-pointer transition-colors
-                  ${i === cursor ? 'bg-yellow-400/10 text-violet-400' : 'text-white hover:bg-white/5'}
+                  ${i === cursor ? 'bg-white/8 text-white' : 'text-white hover:bg-white/5'}
                   ${c.id === value ? 'font-semibold' : ''}`}
               >
                 {c.name}

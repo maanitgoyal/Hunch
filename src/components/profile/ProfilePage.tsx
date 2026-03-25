@@ -63,7 +63,7 @@ function Field({ label, children }: FieldProps) {
   )
 }
 
-const inputCls = 'w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-violet-400/60 focus:bg-white/10 transition-all text-sm'
+const inputCls = 'w-full px-4 py-3 rounded-xl bg-white/8 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all text-sm'
 
 export default function ProfilePage() {
   const { profile, refreshProfile } = useAuth()
@@ -166,7 +166,7 @@ export default function ProfilePage() {
             { label: 'Total Bets', value: total },
             { label: 'Won', value: won, color: 'text-green-400' },
             { label: 'Lost', value: lost, color: 'text-red-400' },
-            { label: 'Win Rate', value: `${winRate}%`, color: 'text-violet-400' },
+            { label: 'Win Rate', value: `${winRate}%`, color: 'text-white' },
           ].map(({ label, value, color }) => (
             <div key={label} className="text-center">
               <p className={`text-xl font-black ${color ?? 'text-white'}`}>{value}</p>
@@ -222,7 +222,7 @@ export default function ProfilePage() {
               title={label}
               className={`aspect-square rounded-xl text-2xl flex items-center justify-center transition-all cursor-pointer hover:scale-110 active:scale-95
                 ${profile.avatar_emoji === emoji
-                  ? 'bg-violet-500/20 border border-violet-400/50 shadow-lg shadow-violet-500/20 scale-110'
+                  ? 'bg-white/15 border border-white/40 shadow-lg shadow-white/10 scale-110'
                   : 'bg-white/5 border border-white/8 hover:bg-white/10'}`}
             >
               {emoji}
@@ -251,7 +251,7 @@ export default function ProfilePage() {
           <button
             type="submit"
             disabled={nameBusy || !name.trim() || name.trim() === profile.display_name}
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white text-sm font-bold transition-all disabled:opacity-40 shadow-lg shadow-violet-500/20"
+            className="px-6 py-2.5 rounded-xl bg-white hover:bg-gray-100 text-black text-sm font-bold transition-all disabled:opacity-40 shadow-lg shadow-white/10"
           >
             {nameBusy ? 'Saving...' : 'Save Name'}
           </button>
@@ -311,7 +311,7 @@ export default function ProfilePage() {
           <button
             type="submit"
             disabled={pwBusy || !newPw || !confirmPw}
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white text-sm font-bold transition-all disabled:opacity-40 shadow-lg shadow-violet-500/20"
+            className="px-6 py-2.5 rounded-xl bg-white hover:bg-gray-100 text-black text-sm font-bold transition-all disabled:opacity-40 shadow-lg shadow-white/10"
           >
             {pwBusy ? 'Updating...' : 'Update Password'}
           </button>

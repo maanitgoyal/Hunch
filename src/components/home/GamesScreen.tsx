@@ -31,7 +31,7 @@ export default function GamesScreen() {
             className={`
               px-5 py-2 rounded-xl text-sm font-semibold capitalize transition-all
               ${filter === f
-                ? 'bg-gradient-to-r from-violet-600 to-violet-700 text-white shadow-lg shadow-violet-500/25'
+                ? 'bg-white text-black shadow-lg shadow-white/10'
                 : 'bg-white/6 text-gray-400 hover:bg-white/10 hover:text-white border border-white/8'}
             `}
           >

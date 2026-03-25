@@ -53,7 +53,7 @@ export default function GameCard({ game, userBetGameIds = [] }: GameCardProps) {
           </div>
           <div className="flex items-center gap-1.5">
             {game.game_type && game.game_type !== 'regular_season' && (
-              <span className="text-[10px] font-bold bg-violet-500/30 text-violet-200 rounded-full px-2 py-0.5 border border-violet-400/20 uppercase tracking-wide">
+              <span className="text-[10px] font-bold bg-white/15 text-white rounded-full px-2 py-0.5 border border-white/20 uppercase tracking-wide">
                 {game.game_type === 'playoff_semi' ? 'Semi Final' : 'Grand Final'}
               </span>
             )}

@@ -78,7 +78,7 @@ function PredictionPoll({ game, userId }: PredictionPollProps) {
               onClick={() => vote(opt.id)}
               disabled={hasVoted || busy}
               className={`flex-1 relative rounded-xl py-2.5 px-2 text-center transition-all overflow-hidden
-                ${isMyPick ? 'border-2 border-violet-400 bg-violet-500/15' : 'border border-white/10 bg-white/5 hover:bg-white/10'}
+                ${isMyPick ? 'border-2 border-white/60 bg-white/10' : 'border border-white/10 bg-white/5 hover:bg-white/10'}
                 ${hasVoted ? 'cursor-default' : 'cursor-pointer'}`}
             >
               {/* Progress fill */}
@@ -90,7 +90,7 @@ function PredictionPoll({ game, userId }: PredictionPollProps) {
               )}
               <div className="relative">
                 {opt.college && <CollegeLogo college={opt.college} size={24} className="mx-auto mb-1" />}
-                <p className={`text-xs font-bold ${isMyPick ? 'text-violet-300' : 'text-white'}`}>{opt.label}</p>
+                <p className="text-xs font-bold text-white">{opt.label}</p>
                 {hasVoted && <p className="text-gray-400 text-[10px] mt-0.5">{pct}%</p>}
               </div>
             </button>

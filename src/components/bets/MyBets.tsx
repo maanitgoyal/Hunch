@@ -109,7 +109,7 @@ export default function MyBets() {
               onClick={() => setFilter(f)}
               className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all relative
                 ${filter === f
-                  ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/20'
+                  ? 'bg-white text-black shadow-lg shadow-white/10'
                   : 'text-gray-400 hover:text-white'}`}
             >
               {f}

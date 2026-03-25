@@ -2,10 +2,9 @@ import { NavLink } from 'react-router-dom'
 import HunchLogo from '../shared/HunchLogo'
 
 const features = [
-  { icon: '🏆', title: 'Pick winners',        desc: 'Predict who takes the game before kick-off.' },
-  { icon: '📈', title: 'Dynamic odds',        desc: 'Odds shift live as more bets come in — lock yours in early.' },
-  { icon: '⚽', title: 'Live betting',        desc: 'Markets can stay open during the match.' },
-  { icon: '🪙', title: 'Compete for coins',  desc: 'Climb the leaderboard. Top your college.' },
+  { title: 'Pick winners',       desc: 'Predict who takes the game before kick-off.' },
+  { title: 'Dynamic odds',       desc: 'Odds shift as more bets come in. Lock yours in early.' },
+  { title: 'Compete for coins', desc: 'Climb the leaderboard. Top your college.' },
 ]
 
 export default function LandingPage() {
@@ -19,7 +18,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between" style={{ height: '60px' }}>
           <div className="flex items-center gap-2">
             <HunchLogo size={36} />
-            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, letterSpacing: '0.06em', fontSize: '1.35rem' }} className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-violet-400 bg-clip-text text-transparent">Hunch</span>
+            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, letterSpacing: '0.06em', fontSize: '1.35rem' }} className="text-white">Hunch</span>
           </div>
           <div className="flex items-center gap-3">
             <NavLink
@@ -30,7 +29,7 @@ export default function LandingPage() {
             </NavLink>
             <NavLink
               to="/signup"
-              className="px-4 py-2 rounded-lg text-sm font-bold bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 transition-all"
+              className="px-4 py-2 rounded-lg text-sm font-bold bg-white text-black hover:bg-gray-100 transition-all"
             >
               Sign up free
             </NavLink>
@@ -40,16 +39,9 @@ export default function LandingPage() {
 
       {/* Hero */}
       <div className="flex-1 flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-400 text-xs font-semibold mb-8 uppercase tracking-wider">
-          <span className="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse" />
-          College sports prediction
-        </div>
-
         <h1 className="text-5xl sm:text-7xl font-black text-white leading-none tracking-tight mb-6">
           Predict.{' '}
-          <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-            Win.
-          </span>{' '}
+          <span className="text-shimmer">Win.</span>{' '}
           Repeat.
         </h1>
 
@@ -61,7 +53,7 @@ export default function LandingPage() {
         <div className="flex items-center gap-4 flex-wrap justify-center">
           <NavLink
             to="/signup"
-            className="px-8 py-3.5 rounded-xl text-base font-black bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-xl shadow-violet-500/30 hover:shadow-violet-500/50 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="px-8 py-3.5 rounded-xl text-base font-black bg-white text-black hover:bg-gray-100 shadow-xl shadow-white/10 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
             Get started free
           </NavLink>
@@ -75,14 +67,13 @@ export default function LandingPage() {
       </div>
 
       {/* Features */}
-      <div className="max-w-5xl mx-auto px-6 pb-24 w-full">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="max-w-4xl mx-auto px-6 pb-24 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl border border-violet-500/15 bg-white/[0.05] backdrop-blur-sm p-5 text-center hover:border-violet-500/30 hover:bg-white/[0.08] transition-all"
+              className="rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-5 text-center hover:border-white/20 hover:bg-white/[0.07] transition-all"
             >
-              <div className="text-3xl mb-3">{f.icon}</div>
               <p className="text-white font-bold text-sm mb-1">{f.title}</p>
               <p className="text-gray-500 text-xs leading-relaxed">{f.desc}</p>
             </div>
